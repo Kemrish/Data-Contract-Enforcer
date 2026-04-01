@@ -1,0 +1,162 @@
+kind: DataContract
+apiVersion: v3.0.0
+id: week5-event-records
+info:
+  title: Week 5 Event Sourcing — Domain Events
+  version: 1.0.0
+  owner: week5-event-sourcing
+  description: Append-only event log (JSONL). Each line is one domain event with metadata,
+    payload, and temporal fields for ordering and audit.
+  contact:
+    name: Data platform owner
+    email: data-contracts@example.com
+terms:
+  usage: Internal inter-system data contract. Not for external publication.
+  limitations: recorded_at must be >= occurred_at. sequence_number must be monotonic
+    per aggregate_id in a single ordered stream. event_type must remain PascalCase
+    per registry.
+servers:
+  local:
+    type: local
+    path: outputs/week5/events.jsonl
+    format: jsonl
+schema:
+  event_id:
+    type: string
+    required: true
+    description: Observed field `event_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+  event_type:
+    type: string
+    required: true
+    description: Observed field `event_type` from flattened JSONL profile.
+    enum:
+    - ValidationFailed
+    - DocumentQueued
+    - DocumentProcessed
+  aggregate_id:
+    type: string
+    required: true
+    description: Observed field `aggregate_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+  aggregate_type:
+    type: string
+    required: true
+    description: Observed field `aggregate_type` from flattened JSONL profile.
+    enum:
+    - Document
+  sequence_number:
+    type: integer
+    required: true
+    description: Observed field `sequence_number` from flattened JSONL profile.
+    stats:
+      min: 1.0
+      max: 14.0
+      mean: 4.933333333333334
+      p25: 2.0
+      p50: 4.0
+      p75: 7.0
+      p95: 11.049999999999997
+      p99: 13.409999999999997
+      stddev: 3.198869856931026
+  schema_version:
+    type: string
+    required: true
+    description: Observed field `schema_version` from flattened JSONL profile.
+    enum:
+    - '1.0'
+  occurred_at:
+    type: string
+    required: true
+    description: Observed field `occurred_at` from flattened JSONL profile.
+    format: date-time
+  recorded_at:
+    type: string
+    required: true
+    description: Observed field `recorded_at` from flattened JSONL profile.
+    format: date-time
+  payload_doc_id:
+    type: string
+    required: true
+    description: Document identifier carried in event payload; relates to Week 3 doc_id
+      (see dbt relationships test).
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+  payload_status:
+    type: string
+    required: true
+    description: Observed field `payload_status` from flattened JSONL profile.
+    enum:
+    - ok
+  metadata_causation_id:
+    type: string
+    required: false
+    description: Observed field `metadata_causation_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+  metadata_correlation_id:
+    type: string
+    required: true
+    description: Observed field `metadata_correlation_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+  metadata_user_id:
+    type: string
+    required: true
+    description: Observed field `metadata_user_id` from flattened JSONL profile.
+  metadata_source_service:
+    type: string
+    required: true
+    description: Observed field `metadata_source_service` from flattened JSONL profile.
+schema_annotations:
+  payload_doc_id:
+    business_meaning: Join key from event payload to Week 3 extraction records.
+    foreign_key:
+      target_contract: week3-document-refinery-extractions
+      target_field: doc_id
+  recorded_at:
+    business_meaning: Time persisted to the event log; must not precede occurred_at.
+quality:
+  type: SodaChecks
+  specification:
+    checks for dataset:
+    - missing_count(event_id) = 0
+    - missing_count(event_type) = 0
+    - accepted_values(event_type) in [ValidationFailed,DocumentQueued,DocumentProcessed]
+    - missing_count(aggregate_id) = 0
+    - missing_count(aggregate_type) = 0
+    - accepted_values(aggregate_type) in [Document]
+    - missing_count(sequence_number) = 0
+    - missing_count(schema_version) = 0
+    - accepted_values(schema_version) in [1.0]
+    - missing_count(occurred_at) = 0
+    - missing_count(recorded_at) = 0
+    - missing_count(payload_doc_id) = 0
+    - missing_count(payload_status) = 0
+    - accepted_values(payload_status) in [ok]
+    - missing_count(metadata_correlation_id) = 0
+    - missing_count(metadata_user_id) = 0
+    - missing_count(metadata_source_service) = 0
+lineage:
+  upstream:
+  - id: week3-document-refinery
+    description: Produces document identifiers referenced in event payloads.
+    fields_produced:
+    - doc_id
+  downstream:
+  - id: week8-data-contract-enforcer
+    fields_consumed:
+    - event_id
+    - event_type
+    - aggregate_id
+    - sequence_number
+    - payload
+    - occurred_at
+    - recorded_at
+    breaking_if_changed:
+    - event_type
+    - sequence_number
+    - recorded_at
+    description: Contract validation and health reporting.

@@ -1,0 +1,84 @@
+version: 2
+models:
+- name: week5_events
+  meta:
+    contract_id: week5-event-records
+    bitol_contract_file: week5_events.yaml
+    notes: Range checks (e.g. fact_confidence 0..1) and temporal rules are enforced
+      by ValidationRunner and SodaChecks in the Bitol YAML; add dbt_expectations or
+      SQL tests if needed.
+  columns:
+  - name: event_id
+    description: Primary key for the event stream row (globally unique).
+    tests:
+    - not_null
+    - unique
+  - name: event_type
+    description: Observed field `event_type` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - ValidationFailed
+        - DocumentQueued
+        - DocumentProcessed
+  - name: aggregate_id
+    description: Observed field `aggregate_id` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: aggregate_type
+    description: Observed field `aggregate_type` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - Document
+  - name: sequence_number
+    description: Observed field `sequence_number` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: schema_version
+    description: Observed field `schema_version` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - '1.0'
+  - name: occurred_at
+    description: Observed field `occurred_at` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: recorded_at
+    description: Observed field `recorded_at` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: payload_doc_id
+    description: Document identifier carried in event payload; relates to Week 3 doc_id
+      (see dbt relationships test).
+    tests:
+    - not_null
+    - relationships:
+        to: ref('week3_extractions')
+        field: doc_id
+  - name: payload_status
+    description: Observed field `payload_status` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - ok
+  - name: metadata_causation_id
+    description: Observed field `metadata_causation_id` from flattened JSONL profile.
+    tests: []
+  - name: metadata_correlation_id
+    description: Observed field `metadata_correlation_id` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: metadata_user_id
+    description: Observed field `metadata_user_id` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: metadata_source_service
+    description: Observed field `metadata_source_service` from flattened JSONL profile.
+    tests:
+    - not_null

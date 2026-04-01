@@ -1,0 +1,68 @@
+version: 2
+models:
+- name: week3_extractions
+  meta:
+    contract_id: week3-document-refinery-extractions
+    bitol_contract_file: week3_extractions.yaml
+    notes: Range checks (e.g. fact_confidence 0..1) and temporal rules are enforced
+      by ValidationRunner and SodaChecks in the Bitol YAML; add dbt_expectations or
+      SQL tests if needed.
+  columns:
+  - name: doc_id
+    description: Observed field `doc_id` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: source_path
+    description: Observed field `source_path` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: source_hash
+    description: SHA-256 of source content (64 lowercase hex characters).
+    tests:
+    - not_null
+  - name: extraction_model
+    description: Model identifier. Must match claude-* or gpt-* prefix.
+    tests:
+    - not_null
+  - name: processing_time_ms
+    description: Observed field `processing_time_ms` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: extracted_at
+    description: Observed field `extracted_at` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: token_count_input
+    description: Observed field `token_count_input` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: token_count_output
+    description: Observed field `token_count_output` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: fact_fact_id
+    description: Stable fact identifier; must be unique across all rows in this snapshot.
+    tests:
+    - not_null
+    - unique
+  - name: fact_text
+    description: Observed field `fact_text` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: fact_entity_refs
+    description: Observed field `fact_entity_refs` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: fact_confidence
+    description: Confidence score for extracted facts. Must remain 0.0–1.0 float.
+      BREAKING if rescaled to 0–100.
+    tests:
+    - not_null
+  - name: fact_page_ref
+    description: Observed field `fact_page_ref` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: fact_source_excerpt
+    description: Observed field `fact_source_excerpt` from flattened JSONL profile.
+    tests:
+    - not_null

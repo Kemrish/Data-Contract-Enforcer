@@ -1,0 +1,11 @@
+pandas
+pyyaml
+jsonschema
+ydata-profiling
+numpy
+scikit-learn
+openai
+anthropic
+langsmith
+gitpython
+soda-core

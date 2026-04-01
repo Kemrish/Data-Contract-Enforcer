@@ -1,0 +1,143 @@
+kind: DataContract
+apiVersion: v3.0.0
+id: week3-document-refinery-extractions
+info:
+  title: week3-document-refinery-extractions contract
+  version: 1.0.0
+  owner: week8-team
+  description: Auto-generated from source profiling.
+servers:
+  local:
+    type: local
+    path: outputs\week3\extractions.jsonl
+    format: jsonl
+schema:
+  doc_id:
+    type: string
+    required: true
+    description: Auto-generated rule for doc_id.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+  source_path:
+    type: string
+    required: true
+    description: Auto-generated rule for source_path.
+  source_hash:
+    type: string
+    required: true
+    description: Auto-generated rule for source_hash.
+  extraction_model:
+    type: string
+    required: true
+    description: Auto-generated rule for extraction_model.
+    enum:
+    - claude-3-5-sonnet-20241022
+  processing_time_ms:
+    type: integer
+    required: true
+    description: Auto-generated rule for processing_time_ms.
+    stats:
+      min: 687.0
+      max: 2196.0
+      mean: 1497.5666666666666
+      p25: 1128.0
+      p50: 1543.5
+      p75: 1901.5
+      p95: 2159.1
+      p99: 2196.0
+      stddev: 458.4360302848363
+  extracted_at:
+    type: string
+    required: true
+    description: Auto-generated rule for extracted_at.
+    format: date-time
+  fact_fact_id:
+    type: string
+    required: true
+    description: Auto-generated rule for fact_fact_id.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+  fact_text:
+    type: string
+    required: true
+    description: Auto-generated rule for fact_text.
+    enum:
+    - Contract signed on 2025-11-10.
+    - Payment due in 30 days.
+    - Service uptime target is 99.9%.
+  fact_entity_refs:
+    type: string
+    required: true
+    description: Auto-generated rule for fact_entity_refs.
+  fact_confidence:
+    type: number
+    required: true
+    description: Confidence score. Must remain 0.0-1.0 float. BREAKING if changed
+      to 0-100.
+    minimum: 0.0
+    maximum: 1.0
+    stats:
+      min: 0.622
+      max: 0.989
+      mean: 0.8159125
+      p25: 0.7162499999999999
+      p50: 0.822
+      p75: 0.9167500000000001
+      p95: 0.97
+      p99: 0.983
+      stddev: 0.10938690234102842
+  fact_page_ref:
+    type: integer
+    required: true
+    description: Auto-generated rule for fact_page_ref.
+    stats:
+      min: 1.0
+      max: 12.0
+      mean: 6.4625
+      p25: 4.0
+      p50: 6.0
+      p75: 9.25
+      p95: 12.0
+      p99: 12.0
+      stddev: 3.3758076671898447
+  fact_source_excerpt:
+    type: string
+    required: true
+    description: Auto-generated rule for fact_source_excerpt.
+    enum:
+    - Excerpt from source document.
+quality:
+  type: SodaChecks
+  specification:
+    checks for dataset:
+    - missing_count(doc_id) = 0
+    - missing_count(source_path) = 0
+    - missing_count(source_hash) = 0
+    - missing_count(extraction_model) = 0
+    - accepted_values(extraction_model) in [claude-3-5-sonnet-20241022]
+    - missing_count(processing_time_ms) = 0
+    - missing_count(extracted_at) = 0
+    - missing_count(fact_fact_id) = 0
+    - missing_count(fact_text) = 0
+    - accepted_values(fact_text) in [Contract signed on 2025-11-10.,Payment due in
+      30 days.,Service uptime target is 99.9%.]
+    - missing_count(fact_entity_refs) = 0
+    - missing_count(fact_confidence) = 0
+    - min(fact_confidence) >= 0.0
+    - max(fact_confidence) <= 1.0
+    - missing_count(fact_page_ref) = 0
+    - missing_count(fact_source_excerpt) = 0
+    - accepted_values(fact_source_excerpt) in [Excerpt from source document.]
+lineage:
+  upstream: []
+  downstream:
+  - id: pipeline::week4-cartographer
+    fields_consumed:
+    - doc_id
+    - extracted_facts
+    description: Auto-inferred consumer from lineage graph.
+  - id: pipeline::week5-events
+    fields_consumed:
+    - doc_id
+    - extracted_facts
+    description: Auto-inferred consumer from lineage graph.

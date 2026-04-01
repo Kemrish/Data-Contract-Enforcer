@@ -1,0 +1,54 @@
+# Interim / local submission docs (do not commit per project preference)
+INTERIM_SUBMISSION_REPORT.md
+*_INTERIM*.md
+*_interim*.pdf
+
+# Secrets and local env
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Test / type caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temp
+*.log
+*.tmp
+*.temp
+~$*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# dbt (if added later)
+target/
+dbt_packages/
+logs/

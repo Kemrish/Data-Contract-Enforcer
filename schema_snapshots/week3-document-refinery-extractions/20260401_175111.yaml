@@ -1,0 +1,182 @@
+kind: DataContract
+apiVersion: v3.0.0
+id: week3-document-refinery-extractions
+info:
+  title: Week 3 Document Refinery — Extraction Records
+  version: 1.0.0
+  owner: week3-document-refinery
+  description: One JSON object per line. Each record describes one processed document
+    and flattened extracted facts used for profiling and validation.
+terms:
+  usage: Internal inter-system data contract. Not for external publication.
+  limitations: confidence on extracted facts must remain a float in [0.0, 1.0] (not
+    0–100). SHA-256 source_hash must be 64 hex chars. UUID fields must be RFC-4122
+    string form.
+servers:
+  local:
+    type: local
+    path: outputs/week3/extractions.jsonl
+    format: jsonl
+schema:
+  doc_id:
+    type: string
+    required: true
+    description: Observed field `doc_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+  source_path:
+    type: string
+    required: true
+    description: Observed field `source_path` from flattened JSONL profile.
+  source_hash:
+    type: string
+    required: true
+    description: SHA-256 of source content (64 lowercase hex characters).
+    pattern: ^[a-f0-9]{64}$
+  extraction_model:
+    type: string
+    required: true
+    description: Model identifier. Must match claude-* or gpt-* prefix.
+    pattern: ^(claude|gpt)-
+  processing_time_ms:
+    type: integer
+    required: true
+    description: Observed field `processing_time_ms` from flattened JSONL profile.
+    stats:
+      min: 687.0
+      max: 2196.0
+      mean: 1497.5666666666666
+      p25: 1128.0
+      p50: 1543.5
+      p75: 1901.5
+      p95: 2159.1
+      p99: 2196.0
+      stddev: 458.4360302848363
+  extracted_at:
+    type: string
+    required: true
+    description: Observed field `extracted_at` from flattened JSONL profile.
+    format: date-time
+  token_count_input:
+    type: integer
+    required: true
+    description: Observed field `token_count_input` from flattened JSONL profile.
+    stats:
+      min: 1656.0
+      max: 3973.0
+      mean: 2931.3
+      p25: 2383.75
+      p50: 2876.0
+      p75: 3646.0
+      p95: 3875.35
+      p99: 3973.0
+      stddev: 703.992494729868
+  token_count_output:
+    type: integer
+    required: true
+    description: Observed field `token_count_output` from flattened JSONL profile.
+    stats:
+      min: 313.0
+      max: 976.0
+      mean: 649.3666666666667
+      p25: 477.25
+      p50: 640.0
+      p75: 818.0
+      p95: 948.15
+      p99: 976.0
+      stddev: 198.47375524291152
+  fact_fact_id:
+    type: string
+    required: true
+    description: Stable fact identifier; must be unique across all rows in this snapshot.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+    unique: true
+  fact_text:
+    type: string
+    required: true
+    description: Observed field `fact_text` from flattened JSONL profile.
+  fact_entity_refs:
+    type: string
+    required: true
+    description: Observed field `fact_entity_refs` from flattened JSONL profile.
+  fact_confidence:
+    type: number
+    required: true
+    description: Confidence score for extracted facts. Must remain 0.0–1.0 float.
+      BREAKING if rescaled to 0–100.
+    minimum: 0.0
+    maximum: 1.0
+    stats:
+      min: 0.622
+      max: 0.989
+      mean: 0.8159125
+      p25: 0.7162499999999999
+      p50: 0.822
+      p75: 0.9167500000000001
+      p95: 0.97
+      p99: 0.983
+      stddev: 0.10938690234102842
+  fact_page_ref:
+    type: integer
+    required: true
+    description: Observed field `fact_page_ref` from flattened JSONL profile.
+    stats:
+      min: 1.0
+      max: 12.0
+      mean: 6.4625
+      p25: 4.0
+      p50: 6.0
+      p75: 9.25
+      p95: 12.0
+      p99: 12.0
+      stddev: 3.3758076671898447
+  fact_source_excerpt:
+    type: string
+    required: true
+    description: Observed field `fact_source_excerpt` from flattened JSONL profile.
+schema_annotations:
+  doc_id:
+    business_meaning: Primary document key shared with downstream lineage and events.
+  fact_confidence:
+    business_meaning: Normalized model confidence for each extracted fact.
+quality:
+  type: SodaChecks
+  specification:
+    checks for dataset:
+    - missing_count(doc_id) = 0
+    - missing_count(source_path) = 0
+    - missing_count(source_hash) = 0
+    - missing_count(extraction_model) = 0
+    - missing_count(processing_time_ms) = 0
+    - missing_count(extracted_at) = 0
+    - missing_count(token_count_input) = 0
+    - missing_count(token_count_output) = 0
+    - missing_count(fact_fact_id) = 0
+    - duplicate_count(fact_fact_id) = 0
+    - missing_count(fact_text) = 0
+    - missing_count(fact_entity_refs) = 0
+    - missing_count(fact_confidence) = 0
+    - min(fact_confidence) >= 0.0
+    - max(fact_confidence) <= 1.0
+    - missing_count(fact_page_ref) = 0
+    - missing_count(fact_source_excerpt) = 0
+lineage:
+  upstream: []
+  downstream:
+  - id: pipeline::week4-cartographer
+    fields_consumed:
+    - doc_id
+    - extracted_facts
+    breaking_if_changed:
+    - extracted_facts.confidence
+    - doc_id
+    description: Inferred downstream consumer from Week 4 lineage edges.
+  - id: pipeline::week5-events
+    fields_consumed:
+    - doc_id
+    - extracted_facts
+    breaking_if_changed:
+    - extracted_facts.confidence
+    - doc_id
+    description: Inferred downstream consumer from Week 4 lineage edges.
