@@ -14,12 +14,21 @@ UUID_RE = re.compile(r"^[0-9a-f-]{36}$")
 
 
 def load_jsonl(path: Path) -> list[dict]:
-    rows = []
+    rows: list[dict] = []
+    bad: list[str] = []
     with path.open("r", encoding="utf-8") as f:
-        for line in f:
+        for lineno, line in enumerate(f, 1):
             line = line.strip()
-            if line:
+            if not line or line.startswith("#"):
+                continue
+            try:
                 rows.append(json.loads(line))
+            except json.JSONDecodeError as e:
+                bad.append(f"line {lineno}: {e}")
+    if bad:
+        print(f"Warning: skipped {len(bad)} bad JSONL line(s) in {path}")
+    if not rows:
+        raise ValueError(f"No valid JSON rows in {path}")
     return rows
 
 
@@ -173,11 +182,35 @@ def parse_ts(s: str) -> Optional[datetime]:
         return None
 
 
+def should_block(mode: str, results: list[dict]) -> tuple[bool, str]:
+    """AUDIT: never block. WARN: block on FAIL+CRITICAL. ENFORCE: block on FAIL+CRITICAL|HIGH."""
+    for r in results:
+        if r.get("status") != "FAIL":
+            continue
+        sev = r.get("severity", "LOW")
+        if mode == "WARN" and sev == "CRITICAL":
+            return True, f"check_id={r.get('check_id')} severity=CRITICAL"
+        if mode == "ENFORCE" and sev in ("CRITICAL", "HIGH"):
+            return True, f"check_id={r.get('check_id')} severity={sev}"
+    return False, ""
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run validation checks for a generated contract.")
     parser.add_argument("--contract", required=True, type=Path)
     parser.add_argument("--data", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument(
+        "--mode",
+        choices=("AUDIT", "WARN", "ENFORCE"),
+        default="AUDIT",
+        help="AUDIT=log only; WARN=exit 1 on FAIL+CRITICAL; ENFORCE=exit 1 on FAIL+CRITICAL|HIGH.",
+    )
+    parser.add_argument(
+        "--no-baseline-write",
+        action="store_true",
+        help="Do not write schema_snapshots/baselines.json (use on violated data after clean baseline exists).",
+    )
     args = parser.parse_args()
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -458,7 +491,7 @@ def main() -> None:
             )
         )
 
-    if not baseline_columns:
+    if not baseline_columns and not args.no_baseline_write:
         save_baselines(baseline_path, contract_id, df)
 
     status_counts = {"PASS": 0, "FAIL": 0, "WARN": 0, "ERROR": 0}
@@ -466,11 +499,17 @@ def main() -> None:
         if r["status"] in status_counts:
             status_counts[r["status"]] += 1
 
+    block, block_reason = should_block(args.mode, results)
+    pipeline_action = "BLOCK" if block else "PASS"
+
     report = {
         "report_id": str(uuid4()),
         "contract_id": contract_id,
         "snapshot_id": hash_file(args.data),
         "run_timestamp": datetime.now(timezone.utc).isoformat(),
+        "validation_mode": args.mode,
+        "pipeline_action": pipeline_action,
+        "block_reason": block_reason if block else None,
         "total_checks": len(results),
         "passed": status_counts["PASS"],
         "failed": status_counts["FAIL"],
@@ -482,6 +521,10 @@ def main() -> None:
     with args.output.open("w", encoding="utf-8") as f:
         json.dump(report, f, indent=2)
     print(f"Validation report written: {args.output}")
+    print(f"Mode={args.mode} pipeline_action={pipeline_action}")
+
+    if args.mode != "AUDIT" and block:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

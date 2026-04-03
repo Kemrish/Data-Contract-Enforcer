@@ -1,0 +1,221 @@
+kind: DataContract
+apiVersion: v3.0.0
+id: langsmith-trace-runs
+info:
+  title: LangSmith / LLM Trace Export — Run Records
+  version: 1.0.0
+  owner: platform-observability
+  description: 'Exported trace rows (JSONL) for AI contract checks: token math, run_type,
+    timings, cost.'
+  contact:
+    name: Data platform owner
+    email: data-contracts@example.com
+terms:
+  usage: Internal inter-system data contract. Not for external publication.
+  limitations: total_tokens must equal prompt_tokens + completion_tokens. run_type
+    is a closed enum.
+servers:
+  local:
+    type: local
+    path: C:/Users/Administrator/Desktop/Data Contract Enforcer/outputs/traces/runs.jsonl
+    format: jsonl
+schema:
+  id:
+    type: string
+    required: true
+    description: Observed field `id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+  name:
+    type: string
+    required: true
+    description: Observed field `name` from flattened JSONL profile.
+  run_type:
+    type: string
+    required: true
+    description: LangSmith run classification (closed set).
+    enum:
+    - llm
+    - chain
+    - tool
+    - retriever
+    - embedding
+    downstream_consumers:
+    - subscriber_id: week7-ai-contract-extensions
+      fields_consumed: &id001
+      - completion_tokens
+      - end_time
+      - prompt_tokens
+      - run_type
+      - start_time
+      - total_cost
+      - total_tokens
+      breaking_if_changed: &id002
+      - run_type
+      - total_tokens
+      source: contract_registry,default
+  inputs:
+    type: string
+    required: true
+    description: Observed field `inputs` from flattened JSONL profile.
+  outputs:
+    type: string
+    required: true
+    description: Observed field `outputs` from flattened JSONL profile.
+  error:
+    type: string
+    required: false
+    description: Observed field `error` from flattened JSONL profile.
+  start_time:
+    type: string
+    required: true
+    description: Observed field `start_time` from flattened JSONL profile.
+    format: date-time
+    enum:
+    - '2026-03-30T12:09:03Z'
+    downstream_consumers:
+    - subscriber_id: week7-ai-contract-extensions
+      fields_consumed: *id001
+      breaking_if_changed: *id002
+      source: contract_registry,default
+  end_time:
+    type: string
+    required: true
+    description: Observed field `end_time` from flattened JSONL profile.
+    format: date-time
+    enum:
+    - '2026-03-30T12:09:06Z'
+    downstream_consumers:
+    - subscriber_id: week7-ai-contract-extensions
+      fields_consumed: *id001
+      breaking_if_changed: *id002
+      source: contract_registry,default
+  total_tokens:
+    type: integer
+    required: true
+    description: Observed field `total_tokens` from flattened JSONL profile.
+    stats:
+      min: 1453.0
+      max: 3639.0
+      mean: 2530.366666666667
+      p25: 2064.75
+      p50: 2485.5
+      p75: 2944.0
+      p95: 3513.7
+      p99: 3596.5199999999995
+      stddev: 580.325711194538
+    downstream_consumers:
+    - subscriber_id: week7-ai-contract-extensions
+      fields_consumed: *id001
+      breaking_if_changed: *id002
+      source: contract_registry,default
+  prompt_tokens:
+    type: integer
+    required: true
+    description: Observed field `prompt_tokens` from flattened JSONL profile.
+    stats:
+      min: 1066.0
+      max: 2987.0
+      mean: 1991.6333333333334
+      p25: 1581.5
+      p50: 1945.5
+      p75: 2457.5
+      p95: 2926.2
+      p99: 2967.5299999999997
+      stddev: 559.966432609775
+    downstream_consumers:
+    - subscriber_id: week7-ai-contract-extensions
+      fields_consumed: *id001
+      breaking_if_changed: *id002
+      source: contract_registry,default
+  completion_tokens:
+    type: integer
+    required: true
+    description: Observed field `completion_tokens` from flattened JSONL profile.
+    stats:
+      min: 202.0
+      max: 885.0
+      mean: 538.7333333333333
+      p25: 380.0
+      p50: 540.5
+      p75: 704.75
+      p95: 829.4
+      p99: 880.28
+      stddev: 190.19997207815535
+    downstream_consumers:
+    - subscriber_id: week7-ai-contract-extensions
+      fields_consumed: *id001
+      breaking_if_changed: *id002
+      source: contract_registry,default
+  total_cost:
+    type: number
+    required: true
+    description: Observed field `total_cost` from flattened JSONL profile.
+    stats:
+      min: 0.00107
+      max: 0.01923
+      mean: 0.010463499999999999
+      p25: 0.0063325
+      p50: 0.010175
+      p75: 0.0158125
+      p95: 0.017634
+      p99: 0.019171
+      stddev: 0.0055617549434371395
+    downstream_consumers:
+    - subscriber_id: week7-ai-contract-extensions
+      fields_consumed: *id001
+      breaking_if_changed: *id002
+      source: contract_registry,default
+  tags:
+    type: string
+    required: true
+    description: Observed field `tags` from flattened JSONL profile.
+    enum:
+    - '["week3", "extraction"]'
+  parent_run_id:
+    type: string
+    required: false
+    description: Observed field `parent_run_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+  session_id:
+    type: string
+    required: true
+    description: Observed field `session_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+schema_annotations:
+  total_tokens:
+    business_meaning: Must equal prompt + completion tokens.
+profiling_alerts: []
+quality:
+  type: SodaChecks
+  specification:
+    checks for dataset:
+    - missing_count(id) = 0
+    - missing_count(name) = 0
+    - missing_count(run_type) = 0
+    - accepted_values(run_type) in [llm,chain,tool,retriever,embedding]
+    - missing_count(inputs) = 0
+    - missing_count(outputs) = 0
+    - missing_count(start_time) = 0
+    - accepted_values(start_time) in [2026-03-30T12:09:03Z]
+    - missing_count(end_time) = 0
+    - accepted_values(end_time) in [2026-03-30T12:09:06Z]
+    - missing_count(total_tokens) = 0
+    - missing_count(prompt_tokens) = 0
+    - missing_count(completion_tokens) = 0
+    - missing_count(total_cost) = 0
+    - missing_count(tags) = 0
+    - accepted_values(tags) in [["week3", "extraction"]]
+    - missing_count(session_id) = 0
+lineage:
+  upstream: []
+  downstream:
+  - id: week7-ai-contract-extensions
+    fields_consumed: *id001
+    breaking_if_changed: *id002
+    description: AI-specific contract checks on traces.
+    source: contract_registry,default
+    breaking_field_reasons:
+      total_tokens: token accounting consistency checks

@@ -1,0 +1,84 @@
+version: 2
+models:
+- name: langsmith_traces
+  meta:
+    contract_id: langsmith-trace-runs
+    bitol_contract_file: langsmith_traces.yaml
+    notes: Range checks (e.g. fact_confidence 0..1) and temporal rules are enforced
+      by ValidationRunner and SodaChecks in the Bitol YAML; add dbt_expectations or
+      SQL tests if needed.
+  columns:
+  - name: id
+    description: Observed field `id` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: name
+    description: Observed field `name` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: run_type
+    description: LangSmith run classification (closed set).
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - llm
+        - chain
+        - tool
+        - retriever
+        - embedding
+  - name: inputs
+    description: Observed field `inputs` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: outputs
+    description: Observed field `outputs` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: error
+    description: Observed field `error` from flattened JSONL profile.
+    tests: []
+  - name: start_time
+    description: Observed field `start_time` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - '2026-03-30T12:09:03Z'
+  - name: end_time
+    description: Observed field `end_time` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - '2026-03-30T12:09:06Z'
+  - name: total_tokens
+    description: Observed field `total_tokens` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: prompt_tokens
+    description: Observed field `prompt_tokens` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: completion_tokens
+    description: Observed field `completion_tokens` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: total_cost
+    description: Observed field `total_cost` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: tags
+    description: Observed field `tags` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - '["week3", "extraction"]'
+  - name: parent_run_id
+    description: Observed field `parent_run_id` from flattened JSONL profile.
+    tests: []
+  - name: session_id
+    description: Observed field `session_id` from flattened JSONL profile.
+    tests:
+    - not_null

@@ -39,6 +39,9 @@ htmlcov/
 Thumbs.db
 desktop.ini
 
+# Quarantined prompt-validation rows (optional local only)
+outputs/quarantine/
+
 # Logs and temp
 *.log
 *.tmp

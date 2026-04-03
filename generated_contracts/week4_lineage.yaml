@@ -1,0 +1,154 @@
+kind: DataContract
+apiVersion: v3.0.0
+id: week4-brownfield-cartographer-lineage
+info:
+  title: Week 4 Brownfield Cartographer — Lineage Snapshots
+  version: 1.0.0
+  owner: week4-brownfield-cartographer
+  description: Graph snapshots (nodes/edges) used by Week 7 attribution and blast-radius
+    enrichment.
+  contact:
+    name: Data platform owner
+    email: data-contracts@example.com
+terms:
+  usage: Internal inter-system data contract. Not for external publication.
+  limitations: git_commit is 40 hex chars. edge endpoints must exist in nodes[]. node_id
+    uses type::path form.
+servers:
+  local:
+    type: local
+    path: C:/Users/Administrator/Desktop/Data Contract Enforcer/outputs/week4/lineage_snapshots.jsonl
+    format: jsonl
+schema:
+  snapshot_id:
+    type: string
+    required: true
+    description: Observed field `snapshot_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+    enum:
+    - e5addbc3-d318-461e-b25a-9b3d67d5a4dd
+  git_commit:
+    type: string
+    required: true
+    description: 40-character Git commit SHA (hex).
+    pattern: ^[a-f0-9]{40}$
+    enum:
+    - d24b72445496ad980baea9f1804fd5bcd2e0376f
+    downstream_consumers:
+    - subscriber_id: week7-violation-attributor
+      fields_consumed: &id001
+      - edges
+      - git_commit
+      - nodes
+      breaking_if_changed: &id002
+      - edges.source
+      - edges.target
+      - git_commit
+      source: contract_registry,default
+  captured_at:
+    type: string
+    required: true
+    description: Observed field `captured_at` from flattened JSONL profile.
+    format: date-time
+    enum:
+    - '2026-03-30T12:09:06Z'
+  codebase_root:
+    type: string
+    required: true
+    description: Observed field `codebase_root` from flattened JSONL profile.
+    enum:
+    - C:\Users\Administrator\Desktop\Data Contract Enforcer
+  node_id:
+    type: string
+    required: true
+    description: Stable node identifier (type::path or type::label).
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+    enum:
+    - file::src/week3/extractor.py
+    - pipeline::week4-cartographer
+    - pipeline::week5-events
+  node_type:
+    type: string
+    required: true
+    description: Observed field `node_type` from flattened JSONL profile.
+    enum:
+    - FILE
+    - PIPELINE
+  node_label:
+    type: string
+    required: true
+    description: Observed field `node_label` from flattened JSONL profile.
+  metadata_path:
+    type: string
+    required: true
+    description: Observed field `metadata_path` from flattened JSONL profile.
+  metadata_language:
+    type: string
+    required: false
+    description: Observed field `metadata_language` from flattened JSONL profile.
+  edge_count_estimate:
+    type: integer
+    required: true
+    description: Observed field `edge_count_estimate` from flattened JSONL profile.
+    stats:
+      min: 2.0
+      max: 2.0
+      mean: 2.0
+      p25: 2.0
+      p50: 2.0
+      p75: 2.0
+      p95: 2.0
+      p99: 2.0
+      stddev: 0.0
+  node_count_estimate:
+    type: integer
+    required: true
+    description: Observed field `node_count_estimate` from flattened JSONL profile.
+    stats:
+      min: 3.0
+      max: 3.0
+      mean: 3.0
+      p25: 3.0
+      p50: 3.0
+      p75: 3.0
+      p95: 3.0
+      p99: 3.0
+      stddev: 0.0
+schema_annotations:
+  node_id:
+    business_meaning: Lineage node identity for graph traversal.
+profiling_alerts: []
+quality:
+  type: SodaChecks
+  specification:
+    checks for dataset:
+    - missing_count(snapshot_id) = 0
+    - accepted_values(snapshot_id) in [e5addbc3-d318-461e-b25a-9b3d67d5a4dd]
+    - missing_count(git_commit) = 0
+    - accepted_values(git_commit) in [d24b72445496ad980baea9f1804fd5bcd2e0376f]
+    - missing_count(captured_at) = 0
+    - accepted_values(captured_at) in [2026-03-30T12:09:06Z]
+    - missing_count(codebase_root) = 0
+    - accepted_values(codebase_root) in [C:\Users\Administrator\Desktop\Data Contract
+      Enforcer]
+    - missing_count(node_id) = 0
+    - accepted_values(node_id) in [file::src/week3/extractor.py,pipeline::week4-cartographer,pipeline::week5-events]
+    - missing_count(node_type) = 0
+    - accepted_values(node_type) in [FILE,PIPELINE]
+    - missing_count(node_label) = 0
+    - missing_count(metadata_path) = 0
+    - missing_count(edge_count_estimate) = 0
+    - missing_count(node_count_estimate) = 0
+lineage:
+  upstream: []
+  downstream:
+  - id: week7-violation-attributor
+    fields_consumed: *id001
+    breaking_if_changed: *id002
+    description: Blame chain and blast-radius enrichment.
+    source: contract_registry,default
+    breaking_field_reasons:
+      edges.source: graph traversal for blame chain
+      edges.target: graph traversal for blast radius enrichment

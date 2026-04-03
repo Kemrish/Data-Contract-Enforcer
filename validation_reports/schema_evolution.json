@@ -1,0 +1,79 @@
+{
+  "contract_id": "week3-document-refinery-extractions",
+  "analyzed_at": "2026-04-03T12:12:44.890358+00:00",
+  "snapshot_old": "C:\\Users\\Administrator\\Desktop\\Data Contract Enforcer\\schema_snapshots\\week3-document-refinery-extractions\\20260403_084144.yaml",
+  "snapshot_new": "C:\\Users\\Administrator\\Desktop\\Data Contract Enforcer\\schema_snapshots\\week3-document-refinery-extractions\\20260403_084154.yaml",
+  "changes": [
+    {
+      "field": "doc_id",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to doc_id"
+    },
+    {
+      "field": "extracted_at",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to extracted_at"
+    },
+    {
+      "field": "extraction_model",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to extraction_model"
+    },
+    {
+      "field": "fact_confidence",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_confidence"
+    },
+    {
+      "field": "fact_entity_refs",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_entity_refs"
+    },
+    {
+      "field": "fact_fact_id",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_fact_id"
+    },
+    {
+      "field": "fact_page_ref",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_page_ref"
+    },
+    {
+      "field": "fact_source_excerpt",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_source_excerpt"
+    },
+    {
+      "field": "fact_text",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_text"
+    },
+    {
+      "field": "processing_time_ms",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to processing_time_ms"
+    },
+    {
+      "field": "source_hash",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to source_hash"
+    },
+    {
+      "field": "source_path",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to source_path"
+    },
+    {
+      "field": "token_count_input",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to token_count_input"
+    },
+    {
+      "field": "token_count_output",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to token_count_output"
+    }
+  ],
+  "migration_impact_file": "validation_reports\\migration_impact_week3-document-refinery-extractions_20260403_121244.json"
+}

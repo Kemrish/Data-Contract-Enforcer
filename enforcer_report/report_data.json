@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-04-03T16:04:11.983904+00:00",
+  "period": "2026-03-27 to 2026-04-03",
+  "data_health_score": 64,
+  "health_narrative": "Data health score 64/100 based on 4 validation report(s). Attention required: 1 critical issue(s).",
+  "registry_validation": {
+    "coverage_ok": true,
+    "warnings": [],
+    "contract_ids_present": [
+      "langsmith-trace-runs",
+      "week1-intent-code-correlator-intents",
+      "week3-document-refinery-extractions",
+      "week4-brownfield-cartographer-lineage",
+      "week5-event-records"
+    ]
+  },
+  "violations_this_week": {
+    "by_severity": {
+      "CRITICAL": 1,
+      "HIGH": 1,
+      "MEDIUM": 0,
+      "LOW": 0
+    },
+    "total_failed_checks": 2,
+    "violation_log_entries": 3,
+    "violation_log_plain_language": [
+      "[contract_validation] week3-document-refinery-extractions: week3-document-refinery-extractions.fact_confidence.range \u2014 injection_note=True",
+      "[contract_validation] week3-document-refinery-extractions: week3-document-refinery-extractions.fact_confidence.drift \u2014 injection_note=True",
+      "[contract_validation] week5-event-records: week5-event-records.event_type.enum \u2014 injection_note=False"
+    ]
+  },
+  "top_violations_plain_language": [
+    "System contract `week3-document-refinery-extractions`: field 'fact_confidence' failed range check. Expected min>=0.0, max<=1.0; observed min=62.2, max=98.9, mean=81.591. Downstream subscribers: week4-brownfield-cartographer. Failing records (approx): 240.",
+    "System contract `week3-document-refinery-extractions`: field 'fact_confidence' failed statistical_drift check. Expected <=2 warn, <=3 fail threshold; observed z=738.44. Downstream subscribers: week4-brownfield-cartographer. Failing records (approx): 0."
+  ],
+  "schema_changes_detected_plain_language": [
+    "No breaking schema deltas in the compared snapshot pair.",
+    "Overall compatibility: COMPATIBLE. See 2026-04-03T12:12:44.890358+00:00 migration file for checklist and rollback."
+  ],
+  "schema_changes_summary": "No breaking schema deltas in the compared snapshot pair. Overall compatibility: COMPATIBLE. See 2026-04-03T12:12:44.890358+00:00 migration file for checklist and rollback.",
+  "ai_risk_assessment": {
+    "embedding_drift": {
+      "status": "SKIP",
+      "drift_score": null,
+      "message": "OPENAI_API_KEY not set or openai package missing \u2014 embedding drift skipped",
+      "threshold": 0.15
+    },
+    "prompt_input_validation": {
+      "valid_count": 60,
+      "quarantined_count": 0,
+      "status": "PASS"
+    },
+    "llm_output_violation_rate": {
+      "total_outputs": 60,
+      "schema_violations": 0,
+      "violation_rate": 0.0,
+      "trend": "unknown",
+      "status": "PASS",
+      "baseline_rate": null
+    },
+    "summary_plain_language": "Embedding: SKIP (score=None). Prompt inputs quarantined: 0. Verdict schema violations: 0 at rate 0.0.",
+    "summary": "OPENAI_API_KEY not set or openai package missing \u2014 embedding drift skipped"
+  },
+  "recommended_actions_prioritized": [
+    {
+      "priority": 1,
+      "action": "Restore Week 3 `fact_confidence` to float 0.0\u20131.0 in `src/week3/extractor.py` if range/drift FAIL appears.",
+      "risk_reduced": "Silent ranking corruption for Week 4 cartographer consumers."
+    },
+    {
+      "priority": 2,
+      "action": "Run `contracts/runner.py --mode ENFORCE` in CI for published JSONL artifacts.",
+      "risk_reduced": "Blocks bad data before downstream business logic."
+    },
+    {
+      "priority": 3,
+      "action": "Set `OPENAI_API_KEY` and re-run `contracts/ai_extensions.py` to establish embedding baseline.",
+      "risk_reduced": "Semantic drift visibility on extraction text."
+    }
+  ],
+  "recommendations": [
+    "If confidence range FAIL: restore float 0.0\u20131.0 in src/week3/extractor.py to match contract week3-document-refinery-extractions clause fact_confidence.range.",
+    "Add contracts/runner.py --mode ENFORCE as a CI gate before Week 3 artifact publish.",
+    "Refresh schema_snapshots/baselines.json after intentional schema migrations (monthly or on schema change)."
+  ],
+  "sources": {
+    "validation_reports": [
+      "validation_reports\\ai_extensions.json",
+      "validation_reports\\clean_week3.json",
+      "validation_reports\\migration_impact_week3-document-refinery-extractions_20260403_121244.json",
+      "validation_reports\\schema_evolution.json",
+      "validation_reports\\thursday_baseline.json",
+      "validation_reports\\violated_week3.json",
+      "validation_reports\\week5_baseline.json"
+    ],
+    "violation_log": "violation_log\\violations.jsonl",
+    "ai_extensions": "validation_reports\\ai_extensions.json"
+  }
+}

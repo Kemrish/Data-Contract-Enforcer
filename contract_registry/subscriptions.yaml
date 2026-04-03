@@ -1,0 +1,63 @@
+# Manually maintained. Used by ContractGenerator for lineage.downstream and
+# ViolationAttributor blast radius (registry is authoritative per assignment).
+subscriptions:
+  - contract_id: week1-intent-code-correlator-intents
+    subscriber_id: week2-digital-courtroom
+    subscriber_team: week2
+    fields_consumed: [intent_id, code_refs, description]
+    breaking_fields:
+      - field: code_refs.file
+        reason: verdict target_ref must resolve to producer file paths
+    validation_mode: ENFORCE
+    registered_at: "2026-01-10T09:00:00Z"
+    contact: week2-team@example.com
+
+  - contract_id: week3-document-refinery-extractions
+    subscriber_id: week4-brownfield-cartographer
+    subscriber_team: week4
+    fields_consumed: [doc_id, extracted_facts, extraction_model]
+    breaking_fields:
+      - field: extracted_facts.confidence
+        reason: ranking and filtering assume 0.0–1.0 scale
+      - field: doc_id
+        reason: node identity for document-derived lineage nodes
+    validation_mode: ENFORCE
+    registered_at: "2026-01-10T09:00:00Z"
+    contact: week4-team@example.com
+
+  - contract_id: week4-brownfield-cartographer-lineage
+    subscriber_id: week7-violation-attributor
+    subscriber_team: week7
+    fields_consumed: [nodes, edges, git_commit]
+    breaking_fields:
+      - field: edges.source
+        reason: graph traversal for blame chain
+      - field: edges.target
+        reason: graph traversal for blast radius enrichment
+    validation_mode: ENFORCE
+    registered_at: "2026-01-10T09:00:00Z"
+    contact: week7-team@example.com
+
+  - contract_id: week5-event-records
+    subscriber_id: week7-validation-runner
+    subscriber_team: week7
+    fields_consumed: [event_type, payload, sequence_number, recorded_at, occurred_at]
+    breaking_fields:
+      - field: payload
+        reason: JSON schema validation per event_type
+      - field: sequence_number
+        reason: monotonic ordering per aggregate
+    validation_mode: AUDIT
+    registered_at: "2026-01-10T09:00:00Z"
+    contact: week7-team@example.com
+
+  - contract_id: langsmith-trace-runs
+    subscriber_id: week7-ai-contract-extensions
+    subscriber_team: week7
+    fields_consumed: [run_type, total_tokens, prompt_tokens, completion_tokens, total_cost]
+    breaking_fields:
+      - field: total_tokens
+        reason: token accounting consistency checks
+    validation_mode: AUDIT
+    registered_at: "2026-01-10T09:00:00Z"
+    contact: week7-team@example.com

@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-04-03T12:12:50.564077+00:00",
+  "embedding_drift": {
+    "status": "SKIP",
+    "drift_score": null,
+    "message": "OPENAI_API_KEY not set or openai package missing \u2014 embedding drift skipped",
+    "threshold": 0.15
+  },
+  "prompt_input_validation": {
+    "valid_count": 60,
+    "quarantined_count": 0,
+    "status": "PASS"
+  },
+  "llm_output_schema_violation_rate": {
+    "total_outputs": 60,
+    "schema_violations": 0,
+    "violation_rate": 0.0,
+    "trend": "unknown",
+    "status": "PASS",
+    "baseline_rate": null
+  }
+}

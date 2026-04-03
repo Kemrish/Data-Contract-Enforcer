@@ -1,0 +1,74 @@
+version: 2
+models:
+- name: week4_lineage
+  meta:
+    contract_id: week4-brownfield-cartographer-lineage
+    bitol_contract_file: week4_lineage.yaml
+    notes: Range checks (e.g. fact_confidence 0..1) and temporal rules are enforced
+      by ValidationRunner and SodaChecks in the Bitol YAML; add dbt_expectations or
+      SQL tests if needed.
+  columns:
+  - name: snapshot_id
+    description: Observed field `snapshot_id` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - e5addbc3-d318-461e-b25a-9b3d67d5a4dd
+  - name: git_commit
+    description: 40-character Git commit SHA (hex).
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - d24b72445496ad980baea9f1804fd5bcd2e0376f
+  - name: captured_at
+    description: Observed field `captured_at` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - '2026-03-30T12:09:06Z'
+  - name: codebase_root
+    description: Observed field `codebase_root` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - C:\Users\Administrator\Desktop\Data Contract Enforcer
+  - name: node_id
+    description: Stable node identifier (type::path or type::label).
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - file::src/week3/extractor.py
+        - pipeline::week4-cartographer
+        - pipeline::week5-events
+  - name: node_type
+    description: Observed field `node_type` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - FILE
+        - PIPELINE
+  - name: node_label
+    description: Observed field `node_label` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: metadata_path
+    description: Observed field `metadata_path` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: metadata_language
+    description: Observed field `metadata_language` from flattened JSONL profile.
+    tests: []
+  - name: edge_count_estimate
+    description: Observed field `edge_count_estimate` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: node_count_estimate
+    description: Observed field `node_count_estimate` from flattened JSONL profile.
+    tests:
+    - not_null

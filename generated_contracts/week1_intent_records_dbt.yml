@@ -1,0 +1,53 @@
+version: 2
+models:
+- name: week1_intent_records
+  meta:
+    contract_id: week1-intent-code-correlator-intents
+    bitol_contract_file: week1_intent_records.yaml
+    notes: Range checks (e.g. fact_confidence 0..1) and temporal rules are enforced
+      by ValidationRunner and SodaChecks in the Bitol YAML; add dbt_expectations or
+      SQL tests if needed.
+  columns:
+  - name: intent_id
+    description: Observed field `intent_id` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: description
+    description: Observed field `description` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: created_at
+    description: Observed field `created_at` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - '2026-03-30T12:09:06Z'
+  - name: governance_tags_json
+    description: Observed field `governance_tags_json` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: code_ref_file
+    description: Observed field `code_ref_file` from flattened JSONL profile.
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - src/week3/extractor.py
+  - name: code_ref_line_start
+    description: 1-indexed line span in source file.
+    tests:
+    - not_null
+  - name: code_ref_line_end
+    description: 1-indexed line span in source file.
+    tests:
+    - not_null
+  - name: code_ref_symbol
+    description: Observed field `code_ref_symbol` from flattened JSONL profile.
+    tests:
+    - not_null
+  - name: code_ref_confidence
+    description: Confidence score for extracted facts. Must remain 0.0–1.0 float.
+      BREAKING if rescaled to 0–100.
+    tests:
+    - not_null
