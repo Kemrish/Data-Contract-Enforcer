@@ -1,0 +1,2927 @@
+{
+  "contract_id": "week5-event-records",
+  "source_jsonl": "C:/Users/Administrator/Desktop/Data Contract Enforcer/outputs/week5/events.jsonl",
+  "generated_at": "2026-04-04T11:25:52.838493+00:00",
+  "rows_profiled": 1198,
+  "columns_profiled": 158,
+  "profiling_engine": "pandas+jsonl_flatten+ydata_profiling",
+  "confidence_0_1_contract_clauses_on": [
+    "payload_overall_confidence",
+    "payload_confidence"
+  ],
+  "numeric_column_mean_stddev": {
+    "sequence_number": {
+      "mean": 599.5,
+      "stddev": 345.97711870392044
+    },
+    "payload_loan_term_months": {
+      "mean": 41.793103448275865,
+      "stddev": 13.075001530578515
+    },
+    "payload_file_size_bytes": {
+      "mean": 212401.88043478262,
+      "stddev": 100717.81640767735
+    },
+    "payload_fiscal_year": {
+      "mean": 2024.0,
+      "stddev": 0.0
+    },
+    "payload_context_token_count": {
+      "mean": 1569.0338983050847,
+      "stddev": 576.8933435788418
+    },
+    "payload_validation_duration_ms": {
+      "mean": 134.23728813559322,
+      "stddev": 57.03699313272434
+    },
+    "payload_node_sequence": {
+      "mean": 3.204152249134948,
+      "stddev": 1.7588615096342999
+    },
+    "payload_llm_tokens_input": {
+      "mean": 2034.56,
+      "stddev": 718.0306161399287
+    },
+    "payload_llm_tokens_output": {
+      "mean": 539.4,
+      "stddev": 219.75988752105172
+    },
+    "payload_llm_cost_usd": {
+      "mean": 0.014194680000000001,
+      "stddev": 0.003982323634282285
+    },
+    "payload_duration_ms": {
+      "mean": 1509.1245674740485,
+      "stddev": 2890.506909308884
+    },
+    "payload_page_count": {
+      "mean": 3.3333333333333335,
+      "stddev": 1.0954451150103321
+    },
+    "payload_tool_duration_ms": {
+      "mean": 3966.78,
+      "stddev": 2850.945373387715
+    },
+    "payload_raw_text_length": {
+      "mean": 4054.3888888888887,
+      "stddev": 1179.606454416721
+    },
+    "payload_tables_extracted": {
+      "mean": 3.8055555555555554,
+      "stddev": 1.0907256940599408
+    },
+    "payload_processing_ms": {
+      "mean": 5126.694444444444,
+      "stddev": 1643.832209363134
+    },
+    "payload_overall_confidence": {
+      "mean": 0.8817737965814575,
+      "stddev": 0.04741679689176341
+    },
+    "payload_documents_processed": {
+      "mean": 3.0,
+      "stddev": 0.0
+    },
+    "payload_quality_flag_count": {
+      "mean": 0.0,
+      "stddev": 0.0
+    },
+    "payload_total_nodes_executed": {
+      "mean": 5.016949152542373,
+      "stddev": 1.5368073199816787
+    },
+    "payload_total_llm_calls": {
+      "mean": 0.847457627118644,
+      "stddev": 0.3626321077722928
+    },
+    "payload_total_tokens_used": {
+      "mean": 2378.6949152542375,
+      "stddev": 1358.9092387321643
+    },
+    "payload_total_cost_usd": {
+      "mean": 0.02108050847457627,
+      "stddev": 0.013756453585653437
+    },
+    "payload_total_duration_ms": {
+      "mean": 24517.050847457627,
+      "stddev": 14587.76976339371
+    },
+    "payload_analysis_duration_ms": {
+      "mean": 28991.285714285714,
+      "stddev": 8342.148039449306
+    },
+    "payload_fraud_score": {
+      "mean": 0.13636363636363635,
+      "stddev": 0.05445598723239297
+    },
+    "payload_anomalies_found": {
+      "mean": 0.0,
+      "stddev": 0.0
+    },
+    "payload_rules_evaluated": {
+      "mean": 5.222222222222222,
+      "stddev": 1.5634719199411433
+    },
+    "payload_rules_passed": {
+      "mean": 4.111111111111111,
+      "stddev": 1.536590742882148
+    },
+    "payload_rules_failed": {
+      "mean": 0.3333333333333333,
+      "stddev": 0.5
+    },
+    "payload_rules_noted": {
+      "mean": 0.7777777777777778,
+      "stddev": 0.44095855184409843
+    },
+    "payload_confidence": {
+      "mean": 0.7371428571428572,
+      "stddev": 0.10011897684160342
+    },
+    "payload_interest_rate_pct": {
+      "mean": 7.174999999999999,
+      "stddev": 1.008844223191404
+    },
+    "payload_term_months": {
+      "mean": 39.0,
+      "stddev": 15.0996688705415
+    },
+    "payload_remediation_description": {
+      "mean": NaN,
+      "stddev": 0.0
+    }
+  },
+  "columns": {
+    "event_id": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1198,
+      "sample_values": [
+        "ae910751-f88f-46e9-a535-07a5e1c336cd",
+        "eeb746bc-017f-206b-3afa-54de07cd9518",
+        "db0aa2d1-570e-05f4-158f-3870bbfcfe5b",
+        "3d908b87-24a9-6b7c-31e8-e1a6b339482c",
+        "aa42e3d7-fbea-22a2-e51e-eee2eb0cff38"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 1.0,
+        "dominant_pattern": "uuid_like"
+      }
+    },
+    "event_type": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 34,
+      "sample_values": [
+        "ApplicationSubmitted",
+        "DocumentUploadRequested",
+        "PackageCreated",
+        "DocumentUploaded",
+        "DocumentAdded"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "aggregate_id": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 88,
+      "sample_values": [
+        "8d8f79f3-a563-ddb6-0820-fefe380f492d",
+        "b0e4550f-b17f-1b52-aa6d-c37714f1591a",
+        "0a34043e-cee5-bd7a-40b2-a5ceded18b29",
+        "4d593973-24cc-27b3-0ea0-bf6cadadb098",
+        "bd2de3d4-dc4a-79f9-897f-14ec0e64b345"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 1.0,
+        "dominant_pattern": "uuid_like"
+      }
+    },
+    "aggregate_type": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "Document"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "sequence_number": {
+      "dtype": "int64",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1198,
+      "sample_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "stats": {
+        "min": 1.0,
+        "max": 1198.0,
+        "mean": 599.5,
+        "p25": 300.25,
+        "p50": 599.5,
+        "p75": 898.75,
+        "p95": 1138.1499999999999,
+        "p99": 1186.03,
+        "stddev": 345.97711870392044
+      }
+    },
+    "schema_version": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "1.0"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "occurred_at": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 828,
+      "sample_values": [
+        "2026-02-24T07:37:29.767699",
+        "2026-02-24T07:37:49.767699",
+        "2026-03-02T07:38:29.768490",
+        "2026-03-02T07:38:49.768490",
+        "2026-03-09T07:36:29.788128"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "recorded_at": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 828,
+      "sample_values": [
+        "2026-02-24T07:37:29.767699",
+        "2026-02-24T07:37:49.767699",
+        "2026-03-02T07:38:29.768490",
+        "2026-03-02T07:38:49.768490",
+        "2026-03-09T07:36:29.788128"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_application_id": {
+      "dtype": "object",
+      "null_fraction": 0.46494156928213687,
+      "cardinality_estimate": 29,
+      "sample_values": [
+        "APEX-0001",
+        "APEX-0002",
+        "APEX-0003",
+        "APEX-0004",
+        "APEX-0005"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_applicant_id": {
+      "dtype": "object",
+      "null_fraction": 0.9641068447412354,
+      "cardinality_estimate": 26,
+      "sample_values": [
+        "COMP-074",
+        "COMP-041",
+        "COMP-031",
+        "COMP-015",
+        "COMP-057"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_requested_amount_usd": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 29,
+      "sample_values": [
+        "2679000.0",
+        "2388000.0",
+        "1017000.0",
+        "877000.0",
+        "1479000.0"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_loan_purpose": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 6,
+      "sample_values": [
+        "working_capital",
+        "acquisition",
+        "real_estate",
+        "expansion",
+        "refinancing"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_loan_term_months": {
+      "dtype": "float64",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "24.0",
+        "48.0",
+        "36.0",
+        "60.0"
+      ],
+      "stats": {
+        "min": 24.0,
+        "max": 60.0,
+        "mean": 41.793103448275865,
+        "p25": 36.0,
+        "p50": 48.0,
+        "p75": 48.0,
+        "p95": 60.0,
+        "p99": 60.0,
+        "stddev": 13.075001530578515
+      }
+    },
+    "payload_submission_channel": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "branch",
+        "web",
+        "mobile",
+        "agent"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_contact_email": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 29,
+      "sample_values": [
+        "cbrennan@example.net",
+        "juliehamilton@example.org",
+        "heatherberger@example.org",
+        "hthomas@example.com",
+        "lynchpatrick@example.net"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_contact_name": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 29,
+      "sample_values": [
+        "Mark Mccall",
+        "Michele Garcia",
+        "Anthony Howard",
+        "Rebecca Jackson",
+        "Thomas Thomas"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_submitted_at": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 29,
+      "sample_values": [
+        "2026-02-24T07:37:29.767699",
+        "2026-03-02T07:38:29.768490",
+        "2026-03-09T07:36:29.788128",
+        "2026-02-19T07:35:29.788590",
+        "2026-02-15T07:36:29.788973"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_application_reference": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 29,
+      "sample_values": [
+        "APEX-0001",
+        "APEX-0002",
+        "APEX-0003",
+        "APEX-0004",
+        "APEX-0005"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "metadata_causation_id": {
+      "dtype": "object",
+      "null_fraction": 1.0,
+      "cardinality_estimate": 0,
+      "sample_values": []
+    },
+    "metadata_correlation_id": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 151,
+      "sample_values": [
+        "loan-APEX-0001",
+        "docpkg-APEX-0001",
+        "loan-APEX-0002",
+        "docpkg-APEX-0002",
+        "loan-APEX-0003"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "metadata_user_id": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "system-user"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "metadata_source_service": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "the-ledger"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_required_document_types": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "[\"application_proposal\", \"income_statement\", \"balance_sheet\"]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_deadline": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 29,
+      "sample_values": [
+        "2026-03-03T07:37:29.767699",
+        "2026-03-09T07:38:29.768490",
+        "2026-03-16T07:36:29.788128",
+        "2026-02-26T07:35:29.788590",
+        "2026-02-22T07:36:29.788973"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_requested_by": {
+      "dtype": "object",
+      "null_fraction": 0.9607679465776294,
+      "cardinality_estimate": 19,
+      "sample_values": [
+        "system",
+        "system:session-sess-doc-1a451c63",
+        "system:session-sess-doc-37da05b5",
+        "system:session-sess-doc-56b37d54",
+        "system:session-sess-doc-a1afe799"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_package_id": {
+      "dtype": "object",
+      "null_fraction": 0.7787979966611018,
+      "cardinality_estimate": 29,
+      "sample_values": [
+        "APEX-0001",
+        "APEX-0002",
+        "APEX-0003",
+        "APEX-0004",
+        "APEX-0005"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_required_documents": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "[\"application_proposal\", \"income_statement\", \"balance_sheet\"]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_created_at": {
+      "dtype": "object",
+      "null_fraction": 0.9757929883138564,
+      "cardinality_estimate": 29,
+      "sample_values": [
+        "2026-02-24T07:37:49.767699",
+        "2026-03-02T07:38:49.768490",
+        "2026-03-09T07:36:49.788128",
+        "2026-02-19T07:35:49.788590",
+        "2026-02-15T07:36:49.788973"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_document_id": {
+      "dtype": "object",
+      "null_fraction": 0.7412353923205343,
+      "cardinality_estimate": 146,
+      "sample_values": [
+        "doc-eab55b27",
+        "doc-b35acfbf",
+        "doc-96f3ecbd",
+        "doc-5af44e8a",
+        "doc-7ff5facc"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_document_type": {
+      "dtype": "object",
+      "null_fraction": 0.7562604340567612,
+      "cardinality_estimate": 3,
+      "sample_values": [
+        "application_proposal",
+        "income_statement",
+        "balance_sheet"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_document_format": {
+      "dtype": "object",
+      "null_fraction": 0.8464106844741235,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "pdf",
+        "xlsx"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_filename": {
+      "dtype": "object",
+      "null_fraction": 0.9232053422370617,
+      "cardinality_estimate": 92,
+      "sample_values": [
+        "APEX-0007_proposal.pdf",
+        "APEX-0007_income_stmt_2024.pdf",
+        "APEX-0007_balance_sheet_2024.pdf",
+        "APEX-0007_financials.xlsx",
+        "APEX-0008_proposal.pdf"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_file_path": {
+      "dtype": "object",
+      "null_fraction": 0.9232053422370617,
+      "cardinality_estimate": 92,
+      "sample_values": [
+        "documents/COMP-019/APEX-0007_proposal.pdf",
+        "documents/COMP-019/APEX-0007_income_stmt_2024.pdf",
+        "documents/COMP-019/APEX-0007_balance_sheet_2024.pdf",
+        "documents/COMP-019/APEX-0007_financials.xlsx",
+        "documents/COMP-078/APEX-0008_proposal.pdf"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_file_size_bytes": {
+      "dtype": "float64",
+      "null_fraction": 0.9232053422370617,
+      "cardinality_estimate": 92,
+      "sample_values": [
+        "64164.0",
+        "248207.0",
+        "105731.0",
+        "208043.0",
+        "208829.0"
+      ],
+      "stats": {
+        "min": 48329.0,
+        "max": 379941.0,
+        "mean": 212401.88043478262,
+        "p25": 116848.0,
+        "p50": 217168.0,
+        "p75": 292359.0,
+        "p95": 363561.65,
+        "p99": 377477.63,
+        "stddev": 100717.81640767735
+      }
+    },
+    "payload_file_hash": {
+      "dtype": "object",
+      "null_fraction": 0.8464106844741235,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "8eb66e9cbdaaa5ba",
+        "d794b166001141a2",
+        "a86210f5fdceb84f",
+        "3a3a2439911766f6"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_fiscal_year": {
+      "dtype": "float64",
+      "null_fraction": 0.9424040066777963,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "2024.0"
+      ],
+      "stats": {
+        "min": 2024.0,
+        "max": 2024.0,
+        "mean": 2024.0,
+        "p25": 2024.0,
+        "p50": 2024.0,
+        "p75": 2024.0,
+        "p95": 2024.0,
+        "p99": 2024.0,
+        "stddev": 0.0
+      }
+    },
+    "payload_uploaded_at": {
+      "dtype": "object",
+      "null_fraction": 0.9232053422370617,
+      "cardinality_estimate": 92,
+      "sample_values": [
+        "2026-02-19T07:44:49.789609",
+        "2026-02-19T07:53:49.789609",
+        "2026-02-19T07:54:49.789609",
+        "2026-02-19T07:55:49.789609",
+        "2026-03-02T18:36:49.790424"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_uploaded_by": {
+      "dtype": "object",
+      "null_fraction": 0.9232053422370617,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "applicant"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_added_at": {
+      "dtype": "object",
+      "null_fraction": 0.9232053422370617,
+      "cardinality_estimate": 92,
+      "sample_values": [
+        "2026-02-19T07:44:49.789609",
+        "2026-02-19T07:53:49.789609",
+        "2026-02-19T07:54:49.789609",
+        "2026-02-19T07:55:49.789609",
+        "2026-03-02T18:36:49.790424"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_session_id": {
+      "dtype": "object",
+      "null_fraction": 0.41235392320534225,
+      "cardinality_estimate": 59,
+      "sample_values": [
+        "sess-doc-1a451c63",
+        "sess-doc-37da05b5",
+        "sess-doc-56b37d54",
+        "sess-doc-a1afe799",
+        "sess-doc-0ea6697c"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_agent_type": {
+      "dtype": "object",
+      "null_fraction": 0.5200333889816361,
+      "cardinality_estimate": 5,
+      "sample_values": [
+        "document_processing",
+        "credit_analysis",
+        "fraud_detection",
+        "compliance",
+        "decision_orchestrator"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_agent_id": {
+      "dtype": "object",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 5,
+      "sample_values": [
+        "doc-agent-1",
+        "credit-agent-1",
+        "fraud-agent-1",
+        "compliance-agent-1",
+        "orchestrator-1"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_model_version": {
+      "dtype": "object",
+      "null_fraction": 0.9390651085141903,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "claude-sonnet-4-20250514"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_langgraph_graph_version": {
+      "dtype": "object",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "1.0.0-sim"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_context_source": {
+      "dtype": "object",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "fresh"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_context_token_count": {
+      "dtype": "float64",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 59,
+      "sample_values": [
+        "1459.0",
+        "1606.0",
+        "1426.0",
+        "1715.0",
+        "1347.0"
+      ],
+      "stats": {
+        "min": 680.0,
+        "max": 3510.0,
+        "mean": 1569.0338983050847,
+        "p25": 1209.0,
+        "p50": 1454.0,
+        "p75": 1768.0,
+        "p95": 2720.6999999999994,
+        "p99": 3380.0800000000004,
+        "stddev": 576.8933435788418
+      }
+    },
+    "payload_started_at": {
+      "dtype": "object",
+      "null_fraction": 0.9207011686143572,
+      "cardinality_estimate": 95,
+      "sample_values": [
+        "2026-03-05T15:24:52.792942",
+        "2026-03-05T15:25:01.792942",
+        "2026-03-05T15:26:34.792942",
+        "2026-02-24T20:32:52.794813",
+        "2026-02-24T20:33:01.794813"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_inputs_validated": {
+      "dtype": "object",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 5,
+      "sample_values": [
+        "[\"application_id\", \"document_ids\", \"applicant_registry_access\"]",
+        "[\"application_id\", \"document_package_id\", \"applicant_id\"]",
+        "[\"application_id\", \"extracted_facts_events\", \"registry_access\"]",
+        "[\"application_id\", \"company_profile\", \"regulation_set_version\"]",
+        "[\"application_id\", \"credit_stream\", \"fraud_stream\", \"compliance_stream\"]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_validation_duration_ms": {
+      "dtype": "float64",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 52,
+      "sample_values": [
+        "169.0",
+        "137.0",
+        "180.0",
+        "158.0",
+        "52.0"
+      ],
+      "stats": {
+        "min": 41.0,
+        "max": 275.0,
+        "mean": 134.23728813559322,
+        "p25": 100.0,
+        "p50": 123.0,
+        "p75": 170.0,
+        "p95": 250.09999999999994,
+        "p99": 270.94,
+        "stddev": 57.03699313272434
+      }
+    },
+    "payload_validated_at": {
+      "dtype": "object",
+      "null_fraction": 0.9207011686143572,
+      "cardinality_estimate": 95,
+      "sample_values": [
+        "2026-03-05T15:24:54.792942",
+        "2026-03-05T15:25:01.792942",
+        "2026-03-05T15:26:34.792942",
+        "2026-02-24T20:32:54.794813",
+        "2026-02-24T20:33:01.794813"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_node_name": {
+      "dtype": "object",
+      "null_fraction": 0.7587646076794657,
+      "cardinality_estimate": 21,
+      "sample_values": [
+        "validate_inputs",
+        "run_extraction",
+        "assess_quality",
+        "open_credit_record",
+        "load_applicant_registry"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_node_sequence": {
+      "dtype": "float64",
+      "null_fraction": 0.7587646076794657,
+      "cardinality_estimate": 7,
+      "sample_values": [
+        "1.0",
+        "2.0",
+        "3.0",
+        "4.0",
+        "5.0"
+      ],
+      "stats": {
+        "min": 1.0,
+        "max": 7.0,
+        "mean": 3.204152249134948,
+        "p25": 2.0,
+        "p50": 3.0,
+        "p75": 5.0,
+        "p95": 6.0,
+        "p99": 7.0,
+        "stddev": 1.7588615096342999
+      }
+    },
+    "payload_input_keys": {
+      "dtype": "object",
+      "null_fraction": 0.7587646076794657,
+      "cardinality_estimate": 11,
+      "sample_values": [
+        "[\"application_id\", \"documents\"]",
+        "[\"document_paths\"]",
+        "[\"raw_facts\", \"company_profile\"]",
+        "[\"application_id\"]",
+        "[\"applicant_id\"]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_output_keys": {
+      "dtype": "object",
+      "null_fraction": 0.7587646076794657,
+      "cardinality_estimate": 19,
+      "sample_values": [
+        "[\"validated_inputs\", \"document_paths\"]",
+        "[\"raw_facts\", \"page_refs\"]",
+        "[\"quality_assessment\"]",
+        "[\"validated\"]",
+        "[\"credit_stream_opened\"]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_llm_called": {
+      "dtype": "object",
+      "null_fraction": 0.7587646076794657,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_llm_tokens_input": {
+      "dtype": "float64",
+      "null_fraction": 0.9582637729549248,
+      "cardinality_estimate": 50,
+      "sample_values": [
+        "2880.0",
+        "1051.0",
+        "1510.0",
+        "2779.0",
+        "1995.0"
+      ],
+      "stats": {
+        "min": 919.0,
+        "max": 3478.0,
+        "mean": 2034.56,
+        "p25": 1477.75,
+        "p50": 1992.5,
+        "p75": 2601.75,
+        "p95": 3100.15,
+        "p99": 3351.5799999999995,
+        "stddev": 718.0306161399287
+      }
+    },
+    "payload_llm_tokens_output": {
+      "dtype": "float64",
+      "null_fraction": 0.9582637729549248,
+      "cardinality_estimate": 48,
+      "sample_values": [
+        "305.0",
+        "292.0",
+        "686.0",
+        "577.0",
+        "839.0"
+      ],
+      "stats": {
+        "min": 204.0,
+        "max": 888.0,
+        "mean": 539.4,
+        "p25": 340.75,
+        "p50": 530.0,
+        "p75": 702.75,
+        "p95": 881.0,
+        "p99": 885.55,
+        "stddev": 219.75988752105172
+      }
+    },
+    "payload_llm_cost_usd": {
+      "dtype": "float64",
+      "null_fraction": 0.9582637729549248,
+      "cardinality_estimate": 50,
+      "sample_values": [
+        "0.013215",
+        "0.007533",
+        "0.01482",
+        "0.016992",
+        "0.01857"
+      ],
+      "stats": {
+        "min": 0.006753,
+        "max": 0.023649,
+        "mean": 0.014194680000000001,
+        "p25": 0.010786500000000001,
+        "p50": 0.014322000000000001,
+        "p75": 0.017007750000000002,
+        "p95": 0.020120849999999996,
+        "p99": 0.022753769999999996,
+        "stddev": 0.003982323634282285
+      }
+    },
+    "payload_duration_ms": {
+      "dtype": "float64",
+      "null_fraction": 0.7587646076794657,
+      "cardinality_estimate": 228,
+      "sample_values": [
+        "320.0",
+        "145.0",
+        "9646.0",
+        "358.0",
+        "410.0"
+      ],
+      "stats": {
+        "min": 87.0,
+        "max": 11948.0,
+        "mean": 1509.1245674740485,
+        "p25": 212.0,
+        "p50": 333.0,
+        "p75": 465.0,
+        "p95": 8955.599999999999,
+        "p99": 11162.920000000002,
+        "stddev": 2890.506909308884
+      }
+    },
+    "payload_executed_at": {
+      "dtype": "object",
+      "null_fraction": 0.7587646076794657,
+      "cardinality_estimate": 289,
+      "sample_values": [
+        "2026-03-05T15:24:56.792942",
+        "2026-03-05T15:27:59.792942",
+        "2026-03-05T15:28:13.792942",
+        "2026-02-24T20:32:56.794813",
+        "2026-02-24T20:35:05.794813"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_page_count": {
+      "dtype": "float64",
+      "null_fraction": 0.9699499165275459,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "3.0",
+        "5.0",
+        "2.0",
+        "4.0"
+      ],
+      "stats": {
+        "min": 2.0,
+        "max": 5.0,
+        "mean": 3.3333333333333335,
+        "p25": 2.75,
+        "p50": 3.0,
+        "p75": 4.0,
+        "p95": 5.0,
+        "p99": 5.0,
+        "stddev": 1.0954451150103321
+      }
+    },
+    "payload_detected_format": {
+      "dtype": "object",
+      "null_fraction": 0.9699499165275459,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "pdf"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_pipeline_version": {
+      "dtype": "object",
+      "null_fraction": 0.9699499165275459,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "week3-v1.0"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_extraction_model": {
+      "dtype": "object",
+      "null_fraction": 0.9699499165275459,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "mineru-1.0"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_tool_name": {
+      "dtype": "object",
+      "null_fraction": 0.9582637729549248,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "week3_extraction_pipeline",
+        "query_applicant_registry"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_tool_input_summary": {
+      "dtype": "object",
+      "null_fraction": 0.9582637729549248,
+      "cardinality_estimate": 15,
+      "sample_values": [
+        "PDF extraction: income_statement",
+        "PDF extraction: balance_sheet",
+        "company_id=COMP-060, years=[2022,2023,2024]",
+        "company_id=COMP-063, years=[2022,2023,2024]",
+        "company_id=COMP-002, years=[2022,2023,2024]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_tool_output_summary": {
+      "dtype": "object",
+      "null_fraction": 0.9582637729549248,
+      "cardinality_estimate": 9,
+      "sample_values": [
+        "Extracted 9 financial line items",
+        "Extracted 8 financial line items",
+        "Extracted 14 financial line items",
+        "Extracted 11 financial line items",
+        "Extracted 12 financial line items"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_tool_duration_ms": {
+      "dtype": "float64",
+      "null_fraction": 0.9582637729549248,
+      "cardinality_estimate": 50,
+      "sample_values": [
+        "3177.0",
+        "2535.0",
+        "7428.0",
+        "5647.0",
+        "4409.0"
+      ],
+      "stats": {
+        "min": 58.0,
+        "max": 7987.0,
+        "mean": 3966.78,
+        "p25": 293.75,
+        "p50": 4413.0,
+        "p75": 6597.5,
+        "p95": 7863.799999999999,
+        "p99": 7974.75,
+        "stddev": 2850.945373387715
+      }
+    },
+    "payload_called_at": {
+      "dtype": "object",
+      "null_fraction": 0.9582637729549248,
+      "cardinality_estimate": 50,
+      "sample_values": [
+        "2026-03-05T15:26:00.792942",
+        "2026-03-05T15:27:24.792942",
+        "2026-02-24T20:33:25.794813",
+        "2026-02-24T20:34:33.794813",
+        "2026-03-03T23:08:24.796538"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_facts": {
+      "dtype": "object",
+      "null_fraction": 0.9699499165275459,
+      "cardinality_estimate": 36,
+      "sample_values": [
+        "{\"accounts_receivable\": \"1099926.15\", \"balance_discrepancy_usd\": null, \"balance_sheet_balances\": true, \"cash_and_equivalents\": \"547738.61\", \"currency\": \"USD\", \"current_assets\": \"2862193.12\", \"current_liabilities\": \"1551312.65\", \"current_ratio\": 1.85, \"debt_to_ebitda\": 3.57, \"debt_to_equity\": 0.46, \"depreciation_amortization\": \"92865.69\", \"ebitda\": \"588877.28\", \"extraction_notes\": [], \"field_confidence\": {\"net_income\": 0.8672484149111062, \"total_assets\": 0.8965017764491239, \"total_revenue\": 0.9058052765673857}, \"financing_cash_flow\": null, \"fiscal_year_end\": \"2024-12-31\", \"free_cash_flow\": null, \"gaap_compliant\": true, \"gross_margin\": 0.32, \"gross_profit\": \"1502655.89\", \"income_before_tax\": null, \"interest_coverage\": 4.28, \"interest_expense\": \"115806.82\", \"inventory\": \"1184380.81\", \"investing_cash_flow\": null, \"long_term_debt\": \"1561409.38\", \"net_income\": \"283885.74\", \"net_margin\": 0.06, \"operating_cash_flow\": \"248127.17\", \"operating_expenses\": null, \"operating_income\": \"496011.59\", \"page_references\": {\"net_income\": \"page 1, table 1, row 9\", \"total_revenue\": \"page 1, table 1, row 1\"}, \"tax_expense\": null, \"total_assets\": \"6701703.19\", \"total_equity\": \"4600258.14\", \"total_liabilities\": \"2101445.05\", \"total_revenue\": \"4642102.67\"}",
+        "{\"accounts_receivable\": \"1099926.15\", \"balance_discrepancy_usd\": null, \"balance_sheet_balances\": true, \"cash_and_equivalents\": \"547738.61\", \"currency\": \"USD\", \"current_assets\": \"2862193.12\", \"current_liabilities\": \"1551312.65\", \"current_ratio\": 1.85, \"debt_to_ebitda\": 3.57, \"debt_to_equity\": 0.46, \"depreciation_amortization\": \"92865.69\", \"ebitda\": null, \"extraction_notes\": [], \"field_confidence\": {\"net_income\": 0.8822247711566196, \"total_assets\": 0.9561189636243294, \"total_revenue\": 0.8912887057300216}, \"financing_cash_flow\": null, \"fiscal_year_end\": \"2024-12-31\", \"free_cash_flow\": null, \"gaap_compliant\": true, \"gross_margin\": 0.32, \"gross_profit\": \"1502655.89\", \"income_before_tax\": null, \"interest_coverage\": 4.28, \"interest_expense\": \"115806.82\", \"inventory\": \"1184380.81\", \"investing_cash_flow\": null, \"long_term_debt\": \"1561409.38\", \"net_income\": \"283885.74\", \"net_margin\": 0.06, \"operating_cash_flow\": \"248127.17\", \"operating_expenses\": null, \"operating_income\": \"496011.59\", \"page_references\": {\"net_income\": \"page 1, table 1, row 9\", \"total_revenue\": \"page 1, table 1, row 1\"}, \"tax_expense\": null, \"total_assets\": \"6701703.19\", \"total_equity\": \"4600258.14\", \"total_liabilities\": \"2101445.05\", \"total_revenue\": \"4642102.67\"}",
+        "{\"accounts_receivable\": \"1192593.49\", \"balance_discrepancy_usd\": null, \"balance_sheet_balances\": true, \"cash_and_equivalents\": \"795656.04\", \"currency\": \"USD\", \"current_assets\": \"3437938.21\", \"current_liabilities\": \"1847494.38\", \"current_ratio\": 1.86, \"debt_to_ebitda\": 3.19, \"debt_to_equity\": 0.46, \"depreciation_amortization\": \"124098.78\", \"ebitda\": \"640405.41\", \"extraction_notes\": [], \"field_confidence\": {\"net_income\": 0.9125481468040084, \"total_assets\": 0.9553073374464864, \"total_revenue\": 0.9539367044947022}, \"financing_cash_flow\": null, \"fiscal_year_end\": \"2024-12-31\", \"free_cash_flow\": null, \"gaap_compliant\": true, \"gross_margin\": 0.42, \"gross_profit\": \"1772369.85\", \"income_before_tax\": null, \"interest_coverage\": 2.81, \"interest_expense\": \"183849.34\", \"inventory\": \"1099227.47\", \"investing_cash_flow\": null, \"long_term_debt\": \"2477781.72\", \"net_income\": \"260563.37\", \"net_margin\": 0.06, \"operating_cash_flow\": \"506762.82\", \"operating_expenses\": null, \"operating_income\": \"516306.62\", \"page_references\": {\"net_income\": \"page 1, table 1, row 9\", \"total_revenue\": \"page 1, table 1, row 1\"}, \"tax_expense\": null, \"total_assets\": \"6506832.3\", \"total_equity\": \"4463352.15\", \"total_liabilities\": \"2043480.15\", \"total_revenue\": \"4188840.12\"}",
+        "{\"accounts_receivable\": \"1192593.49\", \"balance_discrepancy_usd\": null, \"balance_sheet_balances\": true, \"cash_and_equivalents\": \"795656.04\", \"currency\": \"USD\", \"current_assets\": \"3437938.21\", \"current_liabilities\": \"1847494.38\", \"current_ratio\": 1.86, \"debt_to_ebitda\": 3.19, \"debt_to_equity\": 0.46, \"depreciation_amortization\": \"124098.78\", \"ebitda\": null, \"extraction_notes\": [], \"field_confidence\": {\"net_income\": 0.87275318063087, \"total_assets\": 0.9338433263434992, \"total_revenue\": 0.9108035723536339}, \"financing_cash_flow\": null, \"fiscal_year_end\": \"2024-12-31\", \"free_cash_flow\": null, \"gaap_compliant\": true, \"gross_margin\": 0.42, \"gross_profit\": \"1772369.85\", \"income_before_tax\": null, \"interest_coverage\": 2.81, \"interest_expense\": \"183849.34\", \"inventory\": \"1099227.47\", \"investing_cash_flow\": null, \"long_term_debt\": \"2477781.72\", \"net_income\": \"260563.37\", \"net_margin\": 0.06, \"operating_cash_flow\": \"506762.82\", \"operating_expenses\": null, \"operating_income\": \"516306.62\", \"page_references\": {\"net_income\": \"page 1, table 1, row 9\", \"total_revenue\": \"page 1, table 1, row 1\"}, \"tax_expense\": null, \"total_assets\": \"6506832.3\", \"total_equity\": \"4463352.15\", \"total_liabilities\": \"2043480.15\", \"total_revenue\": \"4188840.12\"}",
+        "{\"accounts_receivable\": \"957503.14\", \"balance_discrepancy_usd\": null, \"balance_sheet_balances\": true, \"cash_and_equivalents\": \"1050530.01\", \"currency\": \"USD\", \"current_assets\": \"3676015.4\", \"current_liabilities\": \"2039993.56\", \"current_ratio\": 1.8, \"debt_to_ebitda\": 6.98, \"debt_to_equity\": 1.3, \"depreciation_amortization\": \"180823.61\", \"ebitda\": \"604241.18\", \"extraction_notes\": [], \"field_confidence\": {\"net_income\": 0.8913550677584628, \"total_assets\": 0.8847814580058746, \"total_revenue\": 0.9169222893573907}, \"financing_cash_flow\": null, \"fiscal_year_end\": \"2024-12-31\", \"free_cash_flow\": null, \"gaap_compliant\": true, \"gross_margin\": 0.39, \"gross_profit\": \"1981880.45\", \"income_before_tax\": null, \"interest_coverage\": 2.38, \"interest_expense\": \"177742.59\", \"inventory\": \"1360144.93\", \"investing_cash_flow\": null, \"long_term_debt\": \"2753312.09\", \"net_income\": \"178297.25\", \"net_margin\": 0.04, \"operating_cash_flow\": \"388461.6\", \"operating_expenses\": null, \"operating_income\": \"423417.57\", \"page_references\": {\"net_income\": \"page 1, table 1, row 9\", \"total_revenue\": \"page 1, table 1, row 1\"}, \"tax_expense\": null, \"total_assets\": \"7447112.61\", \"total_equity\": \"3232507.47\", \"total_liabilities\": \"4214605.14\", \"total_revenue\": \"5061959.74\"}"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_raw_text_length": {
+      "dtype": "float64",
+      "null_fraction": 0.9699499165275459,
+      "cardinality_estimate": 36,
+      "sample_values": [
+        "5757.0",
+        "3156.0",
+        "2468.0",
+        "4807.0",
+        "4880.0"
+      ],
+      "stats": {
+        "min": 2048.0,
+        "max": 5849.0,
+        "mean": 4054.3888888888887,
+        "p25": 2942.75,
+        "p50": 4137.5,
+        "p75": 5128.0,
+        "p95": 5721.0,
+        "p99": 5816.8,
+        "stddev": 1179.606454416721
+      }
+    },
+    "payload_tables_extracted": {
+      "dtype": "float64",
+      "null_fraction": 0.9699499165275459,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "4.0",
+        "5.0",
+        "3.0",
+        "2.0"
+      ],
+      "stats": {
+        "min": 2.0,
+        "max": 5.0,
+        "mean": 3.8055555555555554,
+        "p25": 3.0,
+        "p50": 4.0,
+        "p75": 5.0,
+        "p95": 5.0,
+        "p99": 5.0,
+        "stddev": 1.0907256940599408
+      }
+    },
+    "payload_processing_ms": {
+      "dtype": "float64",
+      "null_fraction": 0.9699499165275459,
+      "cardinality_estimate": 36,
+      "sample_values": [
+        "4660.0",
+        "6951.0",
+        "4665.0",
+        "4682.0",
+        "2898.0"
+      ],
+      "stats": {
+        "min": 2274.0,
+        "max": 7968.0,
+        "mean": 5126.694444444444,
+        "p25": 4128.75,
+        "p50": 5141.5,
+        "p75": 6662.75,
+        "p95": 7482.75,
+        "p99": 7909.2,
+        "stddev": 1643.832209363134
+      }
+    },
+    "payload_completed_at": {
+      "dtype": "object",
+      "null_fraction": 0.8923205342237062,
+      "cardinality_estimate": 109,
+      "sample_values": [
+        "2026-03-05T15:26:29.792942",
+        "2026-03-05T15:27:57.792942",
+        "2026-03-05T15:28:36.792942",
+        "2026-02-24T20:33:57.794813",
+        "2026-02-24T20:35:03.794813"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_overall_confidence": {
+      "dtype": "float64",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 18,
+      "sample_values": [
+        "0.8521391565276979",
+        "0.9419618458518599",
+        "0.8888674526030959",
+        "0.9538780399447646",
+        "0.8775616301089646"
+      ],
+      "stats": {
+        "min": 0.8088311477092177,
+        "max": 0.9577223650413922,
+        "mean": 0.8817737965814575,
+        "p25": 0.8450170150379571,
+        "p50": 0.8785522947773263,
+        "p75": 0.9215407040519505,
+        "p95": 0.9544546887092588,
+        "p99": 0.9570688297749655,
+        "stddev": 0.04741679689176341
+      }
+    },
+    "payload_is_coherent": {
+      "dtype": "object",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "True"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_anomalies": {
+      "dtype": "object",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "[]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_critical_missing_fields": {
+      "dtype": "object",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "[]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_reextraction_recommended": {
+      "dtype": "object",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "False"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_auditor_notes": {
+      "dtype": "object",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "Financial statements appear internally consistent. Balance sheet balances. Revenue consistent with prior year trajectory."
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_assessed_at": {
+      "dtype": "object",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 18,
+      "sample_values": [
+        "2026-03-05T15:28:28.792942",
+        "2026-02-24T20:35:36.794813",
+        "2026-03-03T23:10:48.796538",
+        "2026-03-11T14:16:54.798198",
+        "2026-02-16T16:12:00.799808"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_documents_processed": {
+      "dtype": "float64",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "3.0"
+      ],
+      "stats": {
+        "min": 3.0,
+        "max": 3.0,
+        "mean": 3.0,
+        "p25": 3.0,
+        "p50": 3.0,
+        "p75": 3.0,
+        "p95": 3.0,
+        "p99": 3.0,
+        "stddev": 0.0
+      }
+    },
+    "payload_has_quality_flags": {
+      "dtype": "object",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "False"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_quality_flag_count": {
+      "dtype": "float64",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "0.0"
+      ],
+      "stats": {
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "stddev": 0.0
+      }
+    },
+    "payload_ready_at": {
+      "dtype": "object",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 18,
+      "sample_values": [
+        "2026-03-05T15:28:28.792942",
+        "2026-02-24T20:35:36.794813",
+        "2026-03-03T23:10:48.796538",
+        "2026-03-11T14:16:54.798198",
+        "2026-02-16T16:12:00.799808"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_events_written": {
+      "dtype": "object",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 59,
+      "sample_values": [
+        "[{\"event_type\": \"PackageReadyForAnalysis\", \"stream_id\": \"docpkg-APEX-0012\", \"stream_position\": 13}]",
+        "[{\"event_type\": \"PackageReadyForAnalysis\", \"stream_id\": \"docpkg-APEX-0013\", \"stream_position\": 13}]",
+        "[{\"event_type\": \"PackageReadyForAnalysis\", \"stream_id\": \"docpkg-APEX-0014\", \"stream_position\": 13}]",
+        "[{\"event_type\": \"PackageReadyForAnalysis\", \"stream_id\": \"docpkg-APEX-0015\", \"stream_position\": 13}]",
+        "[{\"event_type\": \"PackageReadyForAnalysis\", \"stream_id\": \"docpkg-APEX-0016\", \"stream_position\": 13}]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_output_summary": {
+      "dtype": "object",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 32,
+      "sample_values": [
+        "3 documents processed, high confidence. Package ready for credit analysis.",
+        "Credit complete. Risk: MEDIUM. Limit: $957,000. Confidence: 81%.",
+        "Credit complete. Risk: LOW. Limit: $342,000. Confidence: 84%.",
+        "Credit complete. Risk: HIGH. Limit: $502,000. Confidence: 71%.",
+        "Credit complete. Risk: MEDIUM. Limit: $1,608,000. Confidence: 77%."
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_written_at": {
+      "dtype": "object",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 59,
+      "sample_values": [
+        "2026-03-05T15:28:28.792942",
+        "2026-02-24T20:35:36.794813",
+        "2026-03-03T23:10:48.796538",
+        "2026-03-11T14:16:54.798198",
+        "2026-02-16T16:12:00.799808"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_total_nodes_executed": {
+      "dtype": "float64",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "3.0",
+        "7.0",
+        "5.0",
+        "6.0"
+      ],
+      "stats": {
+        "min": 3.0,
+        "max": 7.0,
+        "mean": 5.016949152542373,
+        "p25": 3.0,
+        "p50": 5.0,
+        "p75": 6.0,
+        "p95": 7.0,
+        "p99": 7.0,
+        "stddev": 1.5368073199816787
+      }
+    },
+    "payload_total_llm_calls": {
+      "dtype": "float64",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "1.0",
+        "0.0"
+      ],
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.847457627118644,
+        "p25": 1.0,
+        "p50": 1.0,
+        "p75": 1.0,
+        "p95": 1.0,
+        "p99": 1.0,
+        "stddev": 0.3626321077722928
+      }
+    },
+    "payload_total_tokens_used": {
+      "dtype": "float64",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 59,
+      "sample_values": [
+        "1618.0",
+        "1000.0",
+        "1737.0",
+        "2078.0",
+        "1157.0"
+      ],
+      "stats": {
+        "min": 833.0,
+        "max": 6997.0,
+        "mean": 2378.6949152542375,
+        "p25": 1316.5,
+        "p50": 2092.0,
+        "p75": 3128.0,
+        "p95": 4667.299999999999,
+        "p99": 6549.8200000000015,
+        "stddev": 1358.9092387321643
+      }
+    },
+    "payload_total_cost_usd": {
+      "dtype": "float64",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 50,
+      "sample_values": [
+        "0.01904",
+        "0.02336",
+        "0.02234",
+        "0.00936",
+        "0.01016"
+      ],
+      "stats": {
+        "min": 0.0,
+        "max": 0.06297,
+        "mean": 0.02108050847457627,
+        "p25": 0.0123,
+        "p50": 0.02106,
+        "p75": 0.028155,
+        "p95": 0.04200299999999999,
+        "p99": 0.05894480000000001,
+        "stddev": 0.013756453585653437
+      }
+    },
+    "payload_total_duration_ms": {
+      "dtype": "float64",
+      "null_fraction": 0.9507512520868113,
+      "cardinality_estimate": 59,
+      "sample_values": [
+        "23105.0",
+        "12807.0",
+        "21671.0",
+        "17156.0",
+        "17104.0"
+      ],
+      "stats": {
+        "min": 2456.0,
+        "max": 54283.0,
+        "mean": 24517.050847457627,
+        "p25": 13742.0,
+        "p50": 20693.0,
+        "p75": 34385.0,
+        "p95": 50298.399999999994,
+        "p99": 53852.06,
+        "stddev": 14587.76976339371
+      }
+    },
+    "payload_next_agent_triggered": {
+      "dtype": "object",
+      "null_fraction": 0.9582637729549248,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "credit_analysis",
+        "fraud_detection",
+        "compliance",
+        "decision_orchestrator"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_requested_at": {
+      "dtype": "object",
+      "null_fraction": 0.9582637729549248,
+      "cardinality_estimate": 50,
+      "sample_values": [
+        "2026-03-05T15:28:41.792942",
+        "2026-02-24T20:35:49.794813",
+        "2026-03-03T23:11:01.796538",
+        "2026-03-11T14:17:07.798198",
+        "2026-02-16T16:12:13.799808"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_priority": {
+      "dtype": "object",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "NORMAL"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_opened_at": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 14,
+      "sample_values": [
+        "2026-02-16T16:18:18.799808",
+        "2026-02-16T15:49:12.802271",
+        "2026-03-02T16:25:09.804772",
+        "2026-02-21T12:25:20.807274",
+        "2026-02-19T20:24:06.810252"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_fiscal_years_loaded": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "[2022, 2023, 2024]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_has_prior_loans": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "True"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_has_defaults": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "False"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_revenue_trajectory": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 5,
+      "sample_values": [
+        "STABLE",
+        "VOLATILE",
+        "RECOVERING",
+        "GROWTH",
+        "DECLINING"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_data_hash": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 13,
+      "sample_values": [
+        "d978dab543e199b6",
+        "15884d95d460f174",
+        "e9c106cd4cafa81d",
+        "bfe126836d9b6cdd",
+        "ee95a3ce6c489588"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_consumed_at": {
+      "dtype": "object",
+      "null_fraction": 0.9766277128547579,
+      "cardinality_estimate": 28,
+      "sample_values": [
+        "2026-02-16T16:18:23.799808",
+        "2026-02-16T16:18:25.799808",
+        "2026-02-16T15:49:17.802271",
+        "2026-02-16T15:49:19.802271",
+        "2026-03-02T16:25:14.804772"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_document_ids_consumed": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 14,
+      "sample_values": [
+        "[\"doc-b9e4b087\", \"doc-{uuid4().hex[:8]}\"]",
+        "[\"doc-708bfc90\", \"doc-{uuid4().hex[:8]}\"]",
+        "[\"doc-499b2688\", \"doc-{uuid4().hex[:8]}\"]",
+        "[\"doc-00a2f95a\", \"doc-{uuid4().hex[:8]}\"]",
+        "[\"doc-85c38534\", \"doc-{uuid4().hex[:8]}\"]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_facts_summary": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 13,
+      "sample_values": [
+        "Revenue $4,927,564, EBITDA $619,962, Net Income $190,998",
+        "Revenue $2,983,945, EBITDA $815,826, Net Income $378,602",
+        "Revenue $1,791,981, EBITDA $187,952, Net Income $38,476",
+        "Revenue $6,070,930, EBITDA $919,708, Net Income $392,610",
+        "Revenue $5,309,810, EBITDA $1,453,866, Net Income $784,713"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_quality_flags_present": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "False"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_decision": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 14,
+      "sample_values": [
+        "{\"confidence\": 0.81, \"data_quality_caveats\": [], \"key_concerns\": [\"Debt/EBITDA 2.8x above optimal\"], \"policy_overrides_applied\": [], \"rationale\": \"Based on stable revenue trajectory and Debt/EBITDA of 2.8x, the company demonstrates adequate debt service capacity.\", \"recommended_limit_usd\": \"957000.0\", \"risk_tier\": \"MEDIUM\"}",
+        "{\"confidence\": 0.84, \"data_quality_caveats\": [], \"key_concerns\": [], \"policy_overrides_applied\": [], \"rationale\": \"Based on volatile revenue trajectory and Debt/EBITDA of 1.2x, the company demonstrates strong debt service capacity.\", \"recommended_limit_usd\": \"342000.0\", \"risk_tier\": \"LOW\"}",
+        "{\"confidence\": 0.71, \"data_quality_caveats\": [], \"key_concerns\": [\"Debt/EBITDA 9.2x above optimal\"], \"policy_overrides_applied\": [], \"rationale\": \"Based on recovering revenue trajectory and Debt/EBITDA of 9.2x, the company demonstrates stressed debt service capacity.\", \"recommended_limit_usd\": \"502000.0\", \"risk_tier\": \"HIGH\"}",
+        "{\"confidence\": 0.77, \"data_quality_caveats\": [], \"key_concerns\": [\"Debt/EBITDA 4.1x above optimal\"], \"policy_overrides_applied\": [], \"rationale\": \"Based on growth revenue trajectory and Debt/EBITDA of 4.1x, the company demonstrates adequate debt service capacity.\", \"recommended_limit_usd\": \"1608000.0\", \"risk_tier\": \"MEDIUM\"}",
+        "{\"confidence\": 0.83, \"data_quality_caveats\": [], \"key_concerns\": [], \"policy_overrides_applied\": [], \"rationale\": \"Based on stable revenue trajectory and Debt/EBITDA of 1.6x, the company demonstrates strong debt service capacity.\", \"recommended_limit_usd\": \"1012000.0\", \"risk_tier\": \"LOW\"}"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_model_deployment_id": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 14,
+      "sample_values": [
+        "dep-18a397f1",
+        "dep-fe90a4bc",
+        "dep-7ca6b4f6",
+        "dep-a071ecec",
+        "dep-9165c68b"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_input_data_hash": {
+      "dtype": "object",
+      "null_fraction": 0.9791318864774624,
+      "cardinality_estimate": 24,
+      "sample_values": [
+        "fd44aaf0255f47c8",
+        "b93be9c32149934d",
+        "1b6c64d13975188f",
+        "c0476574f226da31",
+        "b61e6fa8e58acc74"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_analysis_duration_ms": {
+      "dtype": "float64",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 14,
+      "sample_values": [
+        "20747.0",
+        "20895.0",
+        "40189.0",
+        "24793.0",
+        "34434.0"
+      ],
+      "stats": {
+        "min": 16179.0,
+        "max": 44154.0,
+        "mean": 28991.285714285714,
+        "p25": 22970.0,
+        "p50": 27256.5,
+        "p75": 35274.0,
+        "p95": 41576.75,
+        "p99": 43638.549999999996,
+        "stddev": 8342.148039449306
+      }
+    },
+    "payload_regulatory_basis": {
+      "dtype": "object",
+      "null_fraction": 0.988313856427379,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "[]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_triggered_by_event_id": {
+      "dtype": "object",
+      "null_fraction": 0.9732888146911519,
+      "cardinality_estimate": 32,
+      "sample_values": [
+        "b207c6b5d57f629c",
+        "528302fa4bcf561c",
+        "da97c3a341c2cc45",
+        "69c469f09592160e",
+        "492afebf2dbb9e0b"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_screening_model_version": {
+      "dtype": "object",
+      "null_fraction": 0.9816360601001669,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "claude-sonnet-4-20250514"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_initiated_at": {
+      "dtype": "object",
+      "null_fraction": 0.9833055091819699,
+      "cardinality_estimate": 20,
+      "sample_values": [
+        "2026-02-21T12:28:29.807274",
+        "2026-02-19T20:27:04.810252",
+        "2026-02-24T11:13:02.813168",
+        "2026-02-24T11:19:36.813168",
+        "2026-03-09T22:36:38.817550"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_fraud_score": {
+      "dtype": "float64",
+      "null_fraction": 0.9908180300500835,
+      "cardinality_estimate": 7,
+      "sample_values": [
+        "0.14",
+        "0.07",
+        "0.19",
+        "0.2",
+        "0.08"
+      ],
+      "stats": {
+        "min": 0.07,
+        "max": 0.2,
+        "mean": 0.13636363636363635,
+        "p25": 0.07500000000000001,
+        "p50": 0.15,
+        "p75": 0.185,
+        "p95": 0.2,
+        "p99": 0.2,
+        "stddev": 0.05445598723239297
+      }
+    },
+    "payload_risk_level": {
+      "dtype": "object",
+      "null_fraction": 0.9908180300500835,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "LOW",
+        "MEDIUM"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_anomalies_found": {
+      "dtype": "float64",
+      "null_fraction": 0.9908180300500835,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "0.0"
+      ],
+      "stats": {
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "stddev": 0.0
+      }
+    },
+    "payload_recommendation": {
+      "dtype": "object",
+      "null_fraction": 0.9849749582637729,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "PROCEED",
+        "APPROVE",
+        "DECLINE",
+        "REFER"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_regulation_set_version": {
+      "dtype": "object",
+      "null_fraction": 0.9833055091819699,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "2026-Q1"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_rules_to_evaluate": {
+      "dtype": "object",
+      "null_fraction": 0.9833055091819699,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "[\"REG-001\", \"REG-002\", \"REG-003\", \"REG-004\", \"REG-005\", \"REG-006\"]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_rule_id": {
+      "dtype": "object",
+      "null_fraction": 0.9607679465776294,
+      "cardinality_estimate": 6,
+      "sample_values": [
+        "REG-001",
+        "REG-002",
+        "REG-003",
+        "REG-004",
+        "REG-005"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_rule_name": {
+      "dtype": "object",
+      "null_fraction": 0.9607679465776294,
+      "cardinality_estimate": 6,
+      "sample_values": [
+        "Bank Secrecy Act (BSA)",
+        "OFAC Sanctions",
+        "Jurisdiction Eligibility",
+        "Legal Entity Eligibility",
+        "Operating History"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_rule_version": {
+      "dtype": "object",
+      "null_fraction": 0.9666110183639399,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "2026-Q1-v1"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_evidence_hash": {
+      "dtype": "object",
+      "null_fraction": 0.9666110183639399,
+      "cardinality_estimate": 35,
+      "sample_values": [
+        "a9591b3a3703a13c",
+        "5700534e6025048a",
+        "331e42a1ab4214e0",
+        "0727bc05fec5f5f4",
+        "a8fc1b76bf077d6f"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_evaluation_notes": {
+      "dtype": "object",
+      "null_fraction": 0.9691151919866444,
+      "cardinality_estimate": 5,
+      "sample_values": [
+        "Bank Secrecy Act (BSA): Clear.",
+        "OFAC Sanctions: Clear.",
+        "Jurisdiction Eligibility: Clear.",
+        "Legal Entity Eligibility: Clear.",
+        "Operating History: Clear."
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_evaluated_at": {
+      "dtype": "object",
+      "null_fraction": 0.9607679465776294,
+      "cardinality_estimate": 47,
+      "sample_values": [
+        "2026-02-24T11:19:38.813168",
+        "2026-02-24T11:19:40.813168",
+        "2026-02-24T11:19:42.813168",
+        "2026-02-24T11:19:44.813168",
+        "2026-02-24T11:19:46.813168"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_note_type": {
+      "dtype": "object",
+      "null_fraction": 0.9941569282136895,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "CRA_CONSIDERATION"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_note_text": {
+      "dtype": "object",
+      "null_fraction": 0.9941569282136895,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "Applicant jurisdiction qualifies for CRA consideration."
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_rules_evaluated": {
+      "dtype": "float64",
+      "null_fraction": 0.9924874791318865,
+      "cardinality_estimate": 3,
+      "sample_values": [
+        "6.0",
+        "2.0",
+        "3.0"
+      ],
+      "stats": {
+        "min": 2.0,
+        "max": 6.0,
+        "mean": 5.222222222222222,
+        "p25": 6.0,
+        "p50": 6.0,
+        "p75": 6.0,
+        "p95": 6.0,
+        "p99": 6.0,
+        "stddev": 1.5634719199411433
+      }
+    },
+    "payload_rules_passed": {
+      "dtype": "float64",
+      "null_fraction": 0.9924874791318865,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "5.0",
+        "1.0",
+        "4.0",
+        "2.0"
+      ],
+      "stats": {
+        "min": 1.0,
+        "max": 5.0,
+        "mean": 4.111111111111111,
+        "p25": 4.0,
+        "p50": 5.0,
+        "p75": 5.0,
+        "p95": 5.0,
+        "p99": 5.0,
+        "stddev": 1.536590742882148
+      }
+    },
+    "payload_rules_failed": {
+      "dtype": "float64",
+      "null_fraction": 0.9924874791318865,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "0.0",
+        "1.0"
+      ],
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.3333333333333333,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 1.0,
+        "p95": 1.0,
+        "p99": 1.0,
+        "stddev": 0.5
+      }
+    },
+    "payload_rules_noted": {
+      "dtype": "float64",
+      "null_fraction": 0.9924874791318865,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "1.0",
+        "0.0"
+      ],
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.7777777777777778,
+        "p25": 1.0,
+        "p50": 1.0,
+        "p75": 1.0,
+        "p95": 1.0,
+        "p99": 1.0,
+        "stddev": 0.44095855184409843
+      }
+    },
+    "payload_has_hard_block": {
+      "dtype": "object",
+      "null_fraction": 0.9924874791318865,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_overall_verdict": {
+      "dtype": "object",
+      "null_fraction": 0.9924874791318865,
+      "cardinality_estimate": 3,
+      "sample_values": [
+        "CLEAR",
+        "BLOCKED",
+        "CONDITIONAL"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_all_analyses_complete": {
+      "dtype": "object",
+      "null_fraction": 0.9941569282136895,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "True"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_orchestrator_session_id": {
+      "dtype": "object",
+      "null_fraction": 0.9941569282136895,
+      "cardinality_estimate": 7,
+      "sample_values": [
+        "sess-dec-67e099f0",
+        "sess-dec-d1a8bb2f",
+        "sess-dec-3207a419",
+        "sess-dec-896150af",
+        "sess-dec-df198541"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_confidence": {
+      "dtype": "float64",
+      "null_fraction": 0.9941569282136895,
+      "cardinality_estimate": 6,
+      "sample_values": [
+        "0.77",
+        "0.84",
+        "0.82",
+        "0.72",
+        "0.7"
+      ],
+      "stats": {
+        "min": 0.54,
+        "max": 0.84,
+        "mean": 0.7371428571428572,
+        "p25": 0.71,
+        "p50": 0.77,
+        "p75": 0.7949999999999999,
+        "p95": 0.834,
+        "p99": 0.8388,
+        "stddev": 0.10011897684160342
+      }
+    },
+    "payload_approved_amount_usd": {
+      "dtype": "object",
+      "null_fraction": 0.993322203672788,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "202000.0",
+        "913000.0",
+        "2410000.0",
+        "1286000.0"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_conditions": {
+      "dtype": "object",
+      "null_fraction": 0.9908180300500835,
+      "cardinality_estimate": 3,
+      "sample_values": [
+        "[\"Monthly financial reporting required\", \"Personal guarantee from principal\"]",
+        "[\"Monthly financial reporting required\"]",
+        "[]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_executive_summary": {
+      "dtype": "object",
+      "null_fraction": 0.9941569282136895,
+      "cardinality_estimate": 6,
+      "sample_values": [
+        "Approval recommended. DECLINING trajectory. Compliance clear. Fraud screening low risk.",
+        "Approval recommended. RECOVERING trajectory. Compliance clear. Fraud screening low risk.",
+        "Approval recommended. GROWTH trajectory. Compliance clear. Fraud screening low risk.",
+        "Decline recommended. DECLINING trajectory. Compliance clear. Fraud screening low risk.",
+        "Decline recommended. RECOVERING trajectory. Compliance clear. Fraud screening low risk."
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_key_risks": {
+      "dtype": "object",
+      "null_fraction": 0.9941569282136895,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "[]",
+        "[\"Revenue trend requires monitoring\"]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_contributing_sessions": {
+      "dtype": "object",
+      "null_fraction": 0.9941569282136895,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "[]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_model_versions": {
+      "dtype": "object",
+      "null_fraction": 0.9941569282136895,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "{\"orchestrator\": \"claude-sonnet-4-20250514\"}"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_generated_at": {
+      "dtype": "object",
+      "null_fraction": 0.9941569282136895,
+      "cardinality_estimate": 7,
+      "sample_values": [
+        "2026-02-24T11:23:48.813168",
+        "2026-03-09T22:50:23.817550",
+        "2026-02-22T05:27:43.826207",
+        "2026-02-25T11:50:53.830172",
+        "2026-03-09T02:44:24.888466"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_interest_rate_pct": {
+      "dtype": "float64",
+      "null_fraction": 0.996661101836394,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "6.08",
+        "6.58",
+        "8.21",
+        "7.83"
+      ],
+      "stats": {
+        "min": 6.08,
+        "max": 8.21,
+        "mean": 7.174999999999999,
+        "p25": 6.455,
+        "p50": 7.205,
+        "p75": 7.925000000000001,
+        "p95": 8.153,
+        "p99": 8.1986,
+        "stddev": 1.008844223191404
+      }
+    },
+    "payload_term_months": {
+      "dtype": "float64",
+      "null_fraction": 0.996661101836394,
+      "cardinality_estimate": 3,
+      "sample_values": [
+        "60.0",
+        "36.0",
+        "24.0"
+      ],
+      "stats": {
+        "min": 24.0,
+        "max": 60.0,
+        "mean": 39.0,
+        "p25": 33.0,
+        "p50": 36.0,
+        "p75": 42.0,
+        "p95": 56.39999999999999,
+        "p99": 59.279999999999994,
+        "stddev": 15.0996688705415
+      }
+    },
+    "payload_approved_by": {
+      "dtype": "object",
+      "null_fraction": 0.996661101836394,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "auto"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_effective_date": {
+      "dtype": "object",
+      "null_fraction": 0.996661101836394,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "2026-03-20"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_approved_at": {
+      "dtype": "object",
+      "null_fraction": 0.996661101836394,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "2026-02-24T11:23:58.813168",
+        "2026-03-09T22:50:33.817550",
+        "2026-02-22T05:27:53.826207",
+        "2026-02-25T11:51:03.830172"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_failure_reason": {
+      "dtype": "object",
+      "null_fraction": 0.9974958263772955,
+      "cardinality_estimate": 3,
+      "sample_values": [
+        "OFAC Sanctions check failed.",
+        "Bank Secrecy Act (BSA) check failed.",
+        "Jurisdiction Eligibility check failed."
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_is_hard_block": {
+      "dtype": "object",
+      "null_fraction": 0.9974958263772955,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "True",
+        "False"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_remediation_available": {
+      "dtype": "object",
+      "null_fraction": 0.9974958263772955,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "False",
+        "True"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_remediation_description": {
+      "dtype": "float64",
+      "null_fraction": 1.0,
+      "cardinality_estimate": 0,
+      "sample_values": [],
+      "stats": {
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN,
+        "p25": NaN,
+        "p50": NaN,
+        "p75": NaN,
+        "p95": NaN,
+        "p99": NaN,
+        "stddev": 0.0
+      }
+    },
+    "payload_decline_reasons": {
+      "dtype": "object",
+      "null_fraction": 0.996661101836394,
+      "cardinality_estimate": 3,
+      "sample_values": [
+        "[\"Compliance hard block: REG-002\"]",
+        "[\"Insufficient debt service coverage\", \"High leverage\"]",
+        "[\"Compliance hard block: REG-003\"]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_declined_by": {
+      "dtype": "object",
+      "null_fraction": 0.996661101836394,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "compliance-system",
+        "auto"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_adverse_action_notice_required": {
+      "dtype": "object",
+      "null_fraction": 0.996661101836394,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "True"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "payload_adverse_action_codes": {
+      "dtype": "object",
+      "null_fraction": 0.996661101836394,
+      "cardinality_estimate": 2,
+      "sample_values": [
+        "[\"COMPLIANCE_BLOCK\"]",
+        "[\"HIGH_DEBT_BURDEN\"]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "payload_declined_at": {
+      "dtype": "object",
+      "null_fraction": 0.996661101836394,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "2026-02-27T17:49:29.821931",
+        "2026-03-09T02:44:34.888466",
+        "2026-03-11T04:26:59.893177",
+        "2026-02-22T07:55:24.897873"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    }
+  }
+}

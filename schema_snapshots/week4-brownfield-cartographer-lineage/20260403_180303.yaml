@@ -83,6 +83,8 @@ schema:
     type: string
     required: true
     description: Stable node identifier (type::path or type::label).
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0

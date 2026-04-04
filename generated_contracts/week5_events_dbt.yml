@@ -17,11 +17,6 @@ models:
     description: Observed field `event_type` from flattened JSONL profile.
     tests:
     - not_null
-    - accepted_values:
-        values:
-        - ValidationFailed
-        - DocumentQueued
-        - DocumentProcessed
   - name: aggregate_id
     description: Observed field `aggregate_id` from flattened JSONL profile.
     tests:
@@ -52,21 +47,39 @@ models:
     description: Observed field `recorded_at` from flattened JSONL profile.
     tests:
     - not_null
-  - name: payload_doc_id
-    description: Document identifier carried in event payload; relates to Week 3 doc_id
-      (see dbt relationships test).
-    tests:
-    - not_null
-    - relationships:
-        to: ref('week3_extractions')
-        field: doc_id
-  - name: payload_status
-    description: Observed field `payload_status` from flattened JSONL profile.
-    tests:
-    - not_null
-    - accepted_values:
-        values:
-        - ok
+  - name: payload_application_id
+    description: Observed field `payload_application_id` from flattened JSONL profile.
+    tests: []
+  - name: payload_applicant_id
+    description: Observed field `payload_applicant_id` from flattened JSONL profile.
+    tests: []
+  - name: payload_requested_amount_usd
+    description: Observed field `payload_requested_amount_usd` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_loan_purpose
+    description: Observed field `payload_loan_purpose` from flattened JSONL profile.
+    tests: []
+  - name: payload_loan_term_months
+    description: Observed field `payload_loan_term_months` from flattened JSONL profile.
+    tests: []
+  - name: payload_submission_channel
+    description: Observed field `payload_submission_channel` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_contact_email
+    description: Observed field `payload_contact_email` from flattened JSONL profile.
+    tests: []
+  - name: payload_contact_name
+    description: Observed field `payload_contact_name` from flattened JSONL profile.
+    tests: []
+  - name: payload_submitted_at
+    description: Observed field `payload_submitted_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_application_reference
+    description: Observed field `payload_application_reference` from flattened JSONL
+      profile.
+    tests: []
   - name: metadata_causation_id
     description: Observed field `metadata_causation_id` from flattened JSONL profile.
     tests: []
@@ -82,3 +95,443 @@ models:
     description: Observed field `metadata_source_service` from flattened JSONL profile.
     tests:
     - not_null
+  - name: payload_required_document_types
+    description: Observed field `payload_required_document_types` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_deadline
+    description: Observed field `payload_deadline` from flattened JSONL profile.
+    tests: []
+  - name: payload_requested_by
+    description: Observed field `payload_requested_by` from flattened JSONL profile.
+    tests: []
+  - name: payload_package_id
+    description: Observed field `payload_package_id` from flattened JSONL profile.
+    tests: []
+  - name: payload_required_documents
+    description: Observed field `payload_required_documents` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_created_at
+    description: Observed field `payload_created_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_document_id
+    description: Observed field `payload_document_id` from flattened JSONL profile.
+    tests: []
+  - name: payload_document_type
+    description: Observed field `payload_document_type` from flattened JSONL profile.
+    tests: []
+  - name: payload_document_format
+    description: Observed field `payload_document_format` from flattened JSONL profile.
+    tests: []
+  - name: payload_filename
+    description: Observed field `payload_filename` from flattened JSONL profile.
+    tests: []
+  - name: payload_file_path
+    description: Observed field `payload_file_path` from flattened JSONL profile.
+    tests: []
+  - name: payload_file_size_bytes
+    description: Observed field `payload_file_size_bytes` from flattened JSONL profile.
+    tests: []
+  - name: payload_file_hash
+    description: Observed field `payload_file_hash` from flattened JSONL profile.
+    tests: []
+  - name: payload_fiscal_year
+    description: Observed field `payload_fiscal_year` from flattened JSONL profile.
+    tests: []
+  - name: payload_uploaded_at
+    description: Observed field `payload_uploaded_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_uploaded_by
+    description: Observed field `payload_uploaded_by` from flattened JSONL profile.
+    tests: []
+  - name: payload_added_at
+    description: Observed field `payload_added_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_session_id
+    description: Observed field `payload_session_id` from flattened JSONL profile.
+    tests: []
+  - name: payload_agent_type
+    description: Observed field `payload_agent_type` from flattened JSONL profile.
+    tests: []
+  - name: payload_agent_id
+    description: Observed field `payload_agent_id` from flattened JSONL profile.
+    tests: []
+  - name: payload_model_version
+    description: Observed field `payload_model_version` from flattened JSONL profile.
+    tests: []
+  - name: payload_langgraph_graph_version
+    description: Observed field `payload_langgraph_graph_version` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_context_source
+    description: Observed field `payload_context_source` from flattened JSONL profile.
+    tests: []
+  - name: payload_context_token_count
+    description: Observed field `payload_context_token_count` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_started_at
+    description: Observed field `payload_started_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_inputs_validated
+    description: Observed field `payload_inputs_validated` from flattened JSONL profile.
+    tests: []
+  - name: payload_validation_duration_ms
+    description: Observed field `payload_validation_duration_ms` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_validated_at
+    description: Observed field `payload_validated_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_node_name
+    description: Observed field `payload_node_name` from flattened JSONL profile.
+    tests: []
+  - name: payload_node_sequence
+    description: Observed field `payload_node_sequence` from flattened JSONL profile.
+    tests: []
+  - name: payload_input_keys
+    description: Observed field `payload_input_keys` from flattened JSONL profile.
+    tests: []
+  - name: payload_output_keys
+    description: Observed field `payload_output_keys` from flattened JSONL profile.
+    tests: []
+  - name: payload_llm_called
+    description: Observed field `payload_llm_called` from flattened JSONL profile.
+    tests: []
+  - name: payload_llm_tokens_input
+    description: Observed field `payload_llm_tokens_input` from flattened JSONL profile.
+    tests: []
+  - name: payload_llm_tokens_output
+    description: Observed field `payload_llm_tokens_output` from flattened JSONL profile.
+    tests: []
+  - name: payload_llm_cost_usd
+    description: Observed field `payload_llm_cost_usd` from flattened JSONL profile.
+    tests: []
+  - name: payload_duration_ms
+    description: Observed field `payload_duration_ms` from flattened JSONL profile.
+    tests: []
+  - name: payload_executed_at
+    description: Observed field `payload_executed_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_page_count
+    description: Observed field `payload_page_count` from flattened JSONL profile.
+    tests: []
+  - name: payload_detected_format
+    description: Observed field `payload_detected_format` from flattened JSONL profile.
+    tests: []
+  - name: payload_pipeline_version
+    description: Observed field `payload_pipeline_version` from flattened JSONL profile.
+    tests: []
+  - name: payload_extraction_model
+    description: Observed field `payload_extraction_model` from flattened JSONL profile.
+    tests: []
+  - name: payload_tool_name
+    description: Observed field `payload_tool_name` from flattened JSONL profile.
+    tests: []
+  - name: payload_tool_input_summary
+    description: Observed field `payload_tool_input_summary` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_tool_output_summary
+    description: Observed field `payload_tool_output_summary` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_tool_duration_ms
+    description: Observed field `payload_tool_duration_ms` from flattened JSONL profile.
+    tests: []
+  - name: payload_called_at
+    description: Observed field `payload_called_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_facts
+    description: Observed field `payload_facts` from flattened JSONL profile.
+    tests: []
+  - name: payload_raw_text_length
+    description: Observed field `payload_raw_text_length` from flattened JSONL profile.
+    tests: []
+  - name: payload_tables_extracted
+    description: Observed field `payload_tables_extracted` from flattened JSONL profile.
+    tests: []
+  - name: payload_processing_ms
+    description: Observed field `payload_processing_ms` from flattened JSONL profile.
+    tests: []
+  - name: payload_completed_at
+    description: Observed field `payload_completed_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_overall_confidence
+    description: Confidence score for extracted facts. Must remain 0.0–1.0 float.
+      BREAKING if rescaled to 0–100.
+    tests: []
+  - name: payload_is_coherent
+    description: Observed field `payload_is_coherent` from flattened JSONL profile.
+    tests: []
+  - name: payload_anomalies
+    description: Observed field `payload_anomalies` from flattened JSONL profile.
+    tests: []
+  - name: payload_critical_missing_fields
+    description: Observed field `payload_critical_missing_fields` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_reextraction_recommended
+    description: Observed field `payload_reextraction_recommended` from flattened
+      JSONL profile.
+    tests: []
+  - name: payload_auditor_notes
+    description: Observed field `payload_auditor_notes` from flattened JSONL profile.
+    tests: []
+  - name: payload_assessed_at
+    description: Observed field `payload_assessed_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_documents_processed
+    description: Observed field `payload_documents_processed` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_has_quality_flags
+    description: Observed field `payload_has_quality_flags` from flattened JSONL profile.
+    tests: []
+  - name: payload_quality_flag_count
+    description: Observed field `payload_quality_flag_count` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_ready_at
+    description: Observed field `payload_ready_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_events_written
+    description: Observed field `payload_events_written` from flattened JSONL profile.
+    tests: []
+  - name: payload_output_summary
+    description: Observed field `payload_output_summary` from flattened JSONL profile.
+    tests: []
+  - name: payload_written_at
+    description: Observed field `payload_written_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_total_nodes_executed
+    description: Observed field `payload_total_nodes_executed` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_total_llm_calls
+    description: Observed field `payload_total_llm_calls` from flattened JSONL profile.
+    tests: []
+  - name: payload_total_tokens_used
+    description: Observed field `payload_total_tokens_used` from flattened JSONL profile.
+    tests: []
+  - name: payload_total_cost_usd
+    description: Observed field `payload_total_cost_usd` from flattened JSONL profile.
+    tests: []
+  - name: payload_total_duration_ms
+    description: Observed field `payload_total_duration_ms` from flattened JSONL profile.
+    tests: []
+  - name: payload_next_agent_triggered
+    description: Observed field `payload_next_agent_triggered` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_requested_at
+    description: Observed field `payload_requested_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_priority
+    description: Observed field `payload_priority` from flattened JSONL profile.
+    tests: []
+  - name: payload_opened_at
+    description: Observed field `payload_opened_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_fiscal_years_loaded
+    description: Observed field `payload_fiscal_years_loaded` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_has_prior_loans
+    description: Observed field `payload_has_prior_loans` from flattened JSONL profile.
+    tests: []
+  - name: payload_has_defaults
+    description: Observed field `payload_has_defaults` from flattened JSONL profile.
+    tests: []
+  - name: payload_revenue_trajectory
+    description: Observed field `payload_revenue_trajectory` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_data_hash
+    description: Observed field `payload_data_hash` from flattened JSONL profile.
+    tests: []
+  - name: payload_consumed_at
+    description: Observed field `payload_consumed_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_document_ids_consumed
+    description: Observed field `payload_document_ids_consumed` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_facts_summary
+    description: Observed field `payload_facts_summary` from flattened JSONL profile.
+    tests: []
+  - name: payload_quality_flags_present
+    description: Observed field `payload_quality_flags_present` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_decision
+    description: Observed field `payload_decision` from flattened JSONL profile.
+    tests: []
+  - name: payload_model_deployment_id
+    description: Observed field `payload_model_deployment_id` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_input_data_hash
+    description: Observed field `payload_input_data_hash` from flattened JSONL profile.
+    tests: []
+  - name: payload_analysis_duration_ms
+    description: Observed field `payload_analysis_duration_ms` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_regulatory_basis
+    description: Observed field `payload_regulatory_basis` from flattened JSONL profile.
+    tests: []
+  - name: payload_triggered_by_event_id
+    description: Observed field `payload_triggered_by_event_id` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_screening_model_version
+    description: Observed field `payload_screening_model_version` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_initiated_at
+    description: Observed field `payload_initiated_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_fraud_score
+    description: Observed field `payload_fraud_score` from flattened JSONL profile.
+    tests: []
+  - name: payload_risk_level
+    description: Observed field `payload_risk_level` from flattened JSONL profile.
+    tests: []
+  - name: payload_anomalies_found
+    description: Observed field `payload_anomalies_found` from flattened JSONL profile.
+    tests: []
+  - name: payload_recommendation
+    description: Observed field `payload_recommendation` from flattened JSONL profile.
+    tests: []
+  - name: payload_regulation_set_version
+    description: Observed field `payload_regulation_set_version` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_rules_to_evaluate
+    description: Observed field `payload_rules_to_evaluate` from flattened JSONL profile.
+    tests: []
+  - name: payload_rule_id
+    description: Observed field `payload_rule_id` from flattened JSONL profile.
+    tests: []
+  - name: payload_rule_name
+    description: Observed field `payload_rule_name` from flattened JSONL profile.
+    tests: []
+  - name: payload_rule_version
+    description: Observed field `payload_rule_version` from flattened JSONL profile.
+    tests: []
+  - name: payload_evidence_hash
+    description: Observed field `payload_evidence_hash` from flattened JSONL profile.
+    tests: []
+  - name: payload_evaluation_notes
+    description: Observed field `payload_evaluation_notes` from flattened JSONL profile.
+    tests: []
+  - name: payload_evaluated_at
+    description: Observed field `payload_evaluated_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_note_type
+    description: Observed field `payload_note_type` from flattened JSONL profile.
+    tests: []
+  - name: payload_note_text
+    description: Observed field `payload_note_text` from flattened JSONL profile.
+    tests: []
+  - name: payload_rules_evaluated
+    description: Observed field `payload_rules_evaluated` from flattened JSONL profile.
+    tests: []
+  - name: payload_rules_passed
+    description: Observed field `payload_rules_passed` from flattened JSONL profile.
+    tests: []
+  - name: payload_rules_failed
+    description: Observed field `payload_rules_failed` from flattened JSONL profile.
+    tests: []
+  - name: payload_rules_noted
+    description: Observed field `payload_rules_noted` from flattened JSONL profile.
+    tests: []
+  - name: payload_has_hard_block
+    description: Observed field `payload_has_hard_block` from flattened JSONL profile.
+    tests: []
+  - name: payload_overall_verdict
+    description: Observed field `payload_overall_verdict` from flattened JSONL profile.
+    tests: []
+  - name: payload_all_analyses_complete
+    description: Observed field `payload_all_analyses_complete` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_orchestrator_session_id
+    description: Observed field `payload_orchestrator_session_id` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_confidence
+    description: Confidence score for extracted facts. Must remain 0.0–1.0 float.
+      BREAKING if rescaled to 0–100.
+    tests: []
+  - name: payload_approved_amount_usd
+    description: Observed field `payload_approved_amount_usd` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_conditions
+    description: Observed field `payload_conditions` from flattened JSONL profile.
+    tests: []
+  - name: payload_executive_summary
+    description: Observed field `payload_executive_summary` from flattened JSONL profile.
+    tests: []
+  - name: payload_key_risks
+    description: Observed field `payload_key_risks` from flattened JSONL profile.
+    tests: []
+  - name: payload_contributing_sessions
+    description: Observed field `payload_contributing_sessions` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_model_versions
+    description: Observed field `payload_model_versions` from flattened JSONL profile.
+    tests: []
+  - name: payload_generated_at
+    description: Observed field `payload_generated_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_interest_rate_pct
+    description: Observed field `payload_interest_rate_pct` from flattened JSONL profile.
+    tests: []
+  - name: payload_term_months
+    description: Observed field `payload_term_months` from flattened JSONL profile.
+    tests: []
+  - name: payload_approved_by
+    description: Observed field `payload_approved_by` from flattened JSONL profile.
+    tests: []
+  - name: payload_effective_date
+    description: Observed field `payload_effective_date` from flattened JSONL profile.
+    tests: []
+  - name: payload_approved_at
+    description: Observed field `payload_approved_at` from flattened JSONL profile.
+    tests: []
+  - name: payload_failure_reason
+    description: Observed field `payload_failure_reason` from flattened JSONL profile.
+    tests: []
+  - name: payload_is_hard_block
+    description: Observed field `payload_is_hard_block` from flattened JSONL profile.
+    tests: []
+  - name: payload_remediation_available
+    description: Observed field `payload_remediation_available` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_remediation_description
+    description: Observed field `payload_remediation_description` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_decline_reasons
+    description: Observed field `payload_decline_reasons` from flattened JSONL profile.
+    tests: []
+  - name: payload_declined_by
+    description: Observed field `payload_declined_by` from flattened JSONL profile.
+    tests: []
+  - name: payload_adverse_action_notice_required
+    description: Observed field `payload_adverse_action_notice_required` from flattened
+      JSONL profile.
+    tests: []
+  - name: payload_adverse_action_codes
+    description: Observed field `payload_adverse_action_codes` from flattened JSONL
+      profile.
+    tests: []
+  - name: payload_declined_at
+    description: Observed field `payload_declined_at` from flattened JSONL profile.
+    tests: []

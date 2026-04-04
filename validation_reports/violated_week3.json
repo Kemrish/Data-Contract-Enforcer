@@ -1,8 +1,8 @@
 {
-  "report_id": "7d056d01-d9f0-4207-8cc2-66b498b7228e",
+  "report_id": "b869e46a-e30b-4421-8918-a586aa977feb",
   "contract_id": "week3-document-refinery-extractions",
-  "snapshot_id": "517ee6d6d77c1a8ea5d40eaedfebb1ee659c31b660ece2ffa1a9de08d5b55218",
-  "run_timestamp": "2026-04-03T12:07:14.586203+00:00",
+  "snapshot_id": "254b2de656a0e0ebface675e7c2d1f1c1a2bb7925b1f31c43479709363f3e1a3",
+  "run_timestamp": "2026-04-03T18:08:18.823237+00:00",
   "validation_mode": "AUDIT",
   "pipeline_action": "PASS",
   "block_reason": null,
@@ -95,18 +95,6 @@
       "records_failing": 0,
       "sample_failing": [],
       "message": "Required field check passed."
-    },
-    {
-      "check_id": "week3-document-refinery-extractions.extraction_model.pattern",
-      "column_name": "extraction_model",
-      "check_type": "pattern",
-      "status": "PASS",
-      "actual_value": "non_matching=0",
-      "expected": "regex ^(claude|gpt)-",
-      "severity": "LOW",
-      "records_failing": 0,
-      "sample_failing": [],
-      "message": "Pattern validation passed."
     },
     {
       "check_id": "week3-document-refinery-extractions.processing_time_ms.required",
@@ -277,6 +265,18 @@
       "message": "Required field check passed."
     },
     {
+      "check_id": "week3-document-refinery-extractions.fact_entity_refs.enum",
+      "column_name": "fact_entity_refs",
+      "check_type": "enum",
+      "status": "PASS",
+      "actual_value": "non_conforming=0",
+      "expected": "in ['[]']",
+      "severity": "LOW",
+      "records_failing": 0,
+      "sample_failing": [],
+      "message": "Enum conformance passed."
+    },
+    {
       "check_id": "week3-document-refinery-extractions.fact_confidence.required",
       "column_name": "fact_confidence",
       "check_type": "required",
@@ -305,10 +305,10 @@
       "column_name": "fact_confidence",
       "check_type": "range",
       "status": "FAIL",
-      "actual_value": "min=62.2, max=98.9, mean=81.591",
+      "actual_value": "min=7.3, max=95.4, mean=58.819",
       "expected": "min>=0.0, max<=1.0",
       "severity": "CRITICAL",
-      "records_failing": 240,
+      "records_failing": 47,
       "sample_failing": [],
       "message": "Range check failed."
     },
@@ -389,12 +389,12 @@
       "column_name": "fact_confidence",
       "check_type": "statistical_drift",
       "status": "FAIL",
-      "actual_value": "z=738.44",
+      "actual_value": "z=157.75",
       "expected": "<=2 warn, <=3 fail threshold",
       "severity": "HIGH",
       "records_failing": 0,
       "sample_failing": [],
-      "message": "fact_confidence mean drifted 738.4 stddev from baseline"
+      "message": "fact_confidence mean drifted 157.8 stddev from baseline"
     },
     {
       "check_id": "week3-document-refinery-extractions.fact_page_ref.drift",

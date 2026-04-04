@@ -154,6 +154,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_application_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -168,6 +170,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_applicant_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -231,6 +235,11 @@ schema:
     required: false
     description: Observed field `payload_submission_channel` from flattened JSONL
       profile.
+    enum:
+    - branch
+    - web
+    - mobile
+    - agent
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -273,6 +282,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_submitted_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -302,10 +312,14 @@ schema:
     type: string
     required: false
     description: Observed field `metadata_causation_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
   metadata_correlation_id:
     type: string
     required: true
     description: Observed field `metadata_correlation_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -334,6 +348,8 @@ schema:
     required: false
     description: Observed field `payload_required_document_types` from flattened JSONL
       profile.
+    enum:
+    - '["application_proposal", "income_statement", "balance_sheet"]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -376,6 +392,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_package_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -391,6 +409,8 @@ schema:
     required: false
     description: Observed field `payload_required_documents` from flattened JSONL
       profile.
+    enum:
+    - '["application_proposal", "income_statement", "balance_sheet"]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -405,6 +425,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_created_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -419,6 +440,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_document_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -433,6 +456,10 @@ schema:
     type: string
     required: false
     description: Observed field `payload_document_type` from flattened JSONL profile.
+    enum:
+    - application_proposal
+    - income_statement
+    - balance_sheet
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -447,6 +474,9 @@ schema:
     type: string
     required: false
     description: Observed field `payload_document_format` from flattened JSONL profile.
+    enum:
+    - pdf
+    - xlsx
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -508,6 +538,11 @@ schema:
     type: string
     required: false
     description: Observed field `payload_file_hash` from flattened JSONL profile.
+    enum:
+    - 8eb66e9cbdaaa5ba
+    - d794b166001141a2
+    - a86210f5fdceb84f
+    - 3a3a2439911766f6
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -541,6 +576,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_uploaded_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -555,6 +591,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_uploaded_by` from flattened JSONL profile.
+    enum:
+    - applicant
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -569,6 +607,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_added_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -583,6 +622,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_session_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -597,6 +638,12 @@ schema:
     type: string
     required: false
     description: Observed field `payload_agent_type` from flattened JSONL profile.
+    enum:
+    - document_processing
+    - credit_analysis
+    - fraud_detection
+    - compliance
+    - decision_orchestrator
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -611,6 +658,14 @@ schema:
     type: string
     required: false
     description: Observed field `payload_agent_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
+    enum:
+    - doc-agent-1
+    - credit-agent-1
+    - fraud-agent-1
+    - compliance-agent-1
+    - orchestrator-1
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -625,6 +680,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_model_version` from flattened JSONL profile.
+    enum:
+    - claude-sonnet-4-20250514
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -640,6 +697,8 @@ schema:
     required: false
     description: Observed field `payload_langgraph_graph_version` from flattened JSONL
       profile.
+    enum:
+    - 1.0.0-sim
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -654,6 +713,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_context_source` from flattened JSONL profile.
+    enum:
+    - fresh
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -688,6 +749,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_started_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -702,6 +764,12 @@ schema:
     type: string
     required: false
     description: Observed field `payload_inputs_validated` from flattened JSONL profile.
+    enum:
+    - '["application_id", "document_ids", "applicant_registry_access"]'
+    - '["application_id", "document_package_id", "applicant_id"]'
+    - '["application_id", "extracted_facts_events", "registry_access"]'
+    - '["application_id", "company_profile", "regulation_set_version"]'
+    - '["application_id", "credit_stream", "fraud_stream", "compliance_stream"]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -736,6 +804,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_validated_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -811,6 +880,9 @@ schema:
     type: string
     required: false
     description: Observed field `payload_llm_called` from flattened JSONL profile.
+    enum:
+    - 'False'
+    - 'True'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -901,6 +973,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_executed_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -934,6 +1007,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_detected_format` from flattened JSONL profile.
+    enum:
+    - pdf
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -948,6 +1023,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_pipeline_version` from flattened JSONL profile.
+    enum:
+    - week3-v1.0
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -962,6 +1039,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_extraction_model` from flattened JSONL profile.
+    enum:
+    - mineru-1.0
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -976,6 +1055,9 @@ schema:
     type: string
     required: false
     description: Observed field `payload_tool_name` from flattened JSONL profile.
+    enum:
+    - week3_extraction_pipeline
+    - query_applicant_registry
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1039,6 +1121,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_called_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1124,6 +1207,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_completed_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1160,6 +1244,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_is_coherent` from flattened JSONL profile.
+    enum:
+    - 'True'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1174,6 +1260,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_anomalies` from flattened JSONL profile.
+    enum:
+    - '[]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -1189,6 +1277,8 @@ schema:
     required: false
     description: Observed field `payload_critical_missing_fields` from flattened JSONL
       profile.
+    enum:
+    - '[]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -1204,6 +1294,8 @@ schema:
     required: false
     description: Observed field `payload_reextraction_recommended` from flattened
       JSONL profile.
+    enum:
+    - 'False'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1218,6 +1310,9 @@ schema:
     type: string
     required: false
     description: Observed field `payload_auditor_notes` from flattened JSONL profile.
+    enum:
+    - Financial statements appear internally consistent. Balance sheet balances. Revenue
+      consistent with prior year trajectory.
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1232,6 +1327,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_assessed_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1266,6 +1362,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_has_quality_flags` from flattened JSONL profile.
+    enum:
+    - 'False'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1300,6 +1398,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_ready_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1342,6 +1441,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_written_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1453,6 +1553,11 @@ schema:
     required: false
     description: Observed field `payload_next_agent_triggered` from flattened JSONL
       profile.
+    enum:
+    - credit_analysis
+    - fraud_detection
+    - compliance
+    - decision_orchestrator
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1467,6 +1572,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_requested_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1481,6 +1587,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_priority` from flattened JSONL profile.
+    enum:
+    - NORMAL
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1495,6 +1603,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_opened_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1510,6 +1619,8 @@ schema:
     required: false
     description: Observed field `payload_fiscal_years_loaded` from flattened JSONL
       profile.
+    enum:
+    - '[2022, 2023, 2024]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -1524,6 +1635,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_has_prior_loans` from flattened JSONL profile.
+    enum:
+    - 'True'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1538,6 +1651,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_has_defaults` from flattened JSONL profile.
+    enum:
+    - 'False'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1553,6 +1668,12 @@ schema:
     required: false
     description: Observed field `payload_revenue_trajectory` from flattened JSONL
       profile.
+    enum:
+    - STABLE
+    - VOLATILE
+    - RECOVERING
+    - GROWTH
+    - DECLINING
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1581,6 +1702,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_consumed_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1625,6 +1747,8 @@ schema:
     required: false
     description: Observed field `payload_quality_flags_present` from flattened JSONL
       profile.
+    enum:
+    - 'False'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1654,6 +1778,8 @@ schema:
     required: false
     description: Observed field `payload_model_deployment_id` from flattened JSONL
       profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1702,6 +1828,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_regulatory_basis` from flattened JSONL profile.
+    enum:
+    - '[]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -1717,6 +1845,8 @@ schema:
     required: false
     description: Observed field `payload_triggered_by_event_id` from flattened JSONL
       profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1732,6 +1862,8 @@ schema:
     required: false
     description: Observed field `payload_screening_model_version` from flattened JSONL
       profile.
+    enum:
+    - claude-sonnet-4-20250514
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1746,6 +1878,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_initiated_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1779,6 +1912,9 @@ schema:
     type: string
     required: false
     description: Observed field `payload_risk_level` from flattened JSONL profile.
+    enum:
+    - LOW
+    - MEDIUM
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1812,6 +1948,11 @@ schema:
     type: string
     required: false
     description: Observed field `payload_recommendation` from flattened JSONL profile.
+    enum:
+    - PROCEED
+    - APPROVE
+    - DECLINE
+    - REFER
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1827,6 +1968,8 @@ schema:
     required: false
     description: Observed field `payload_regulation_set_version` from flattened JSONL
       profile.
+    enum:
+    - 2026-Q1
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1841,6 +1984,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_rules_to_evaluate` from flattened JSONL profile.
+    enum:
+    - '["REG-001", "REG-002", "REG-003", "REG-004", "REG-005", "REG-006"]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -1855,6 +2000,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_rule_id` from flattened JSONL profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1883,6 +2030,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_rule_version` from flattened JSONL profile.
+    enum:
+    - 2026-Q1-v1
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1911,6 +2060,12 @@ schema:
     type: string
     required: false
     description: Observed field `payload_evaluation_notes` from flattened JSONL profile.
+    enum:
+    - 'Bank Secrecy Act (BSA): Clear.'
+    - 'OFAC Sanctions: Clear.'
+    - 'Jurisdiction Eligibility: Clear.'
+    - 'Legal Entity Eligibility: Clear.'
+    - 'Operating History: Clear.'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1925,6 +2080,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_evaluated_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1939,6 +2095,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_note_type` from flattened JSONL profile.
+    enum:
+    - CRA_CONSIDERATION
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -1953,6 +2111,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_note_text` from flattened JSONL profile.
+    enum:
+    - Applicant jurisdiction qualifies for CRA consideration.
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2043,6 +2203,9 @@ schema:
     type: string
     required: false
     description: Observed field `payload_has_hard_block` from flattened JSONL profile.
+    enum:
+    - 'False'
+    - 'True'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2057,6 +2220,10 @@ schema:
     type: string
     required: false
     description: Observed field `payload_overall_verdict` from flattened JSONL profile.
+    enum:
+    - CLEAR
+    - BLOCKED
+    - CONDITIONAL
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2072,6 +2239,8 @@ schema:
     required: false
     description: Observed field `payload_all_analyses_complete` from flattened JSONL
       profile.
+    enum:
+    - 'True'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2087,6 +2256,8 @@ schema:
     required: false
     description: Observed field `payload_orchestrator_session_id` from flattened JSONL
       profile.
+    format: uuid
+    pattern: ^[0-9a-f-]{36}$
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2124,6 +2295,11 @@ schema:
     required: false
     description: Observed field `payload_approved_amount_usd` from flattened JSONL
       profile.
+    enum:
+    - '202000.0'
+    - '913000.0'
+    - '2410000.0'
+    - '1286000.0'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2138,6 +2314,10 @@ schema:
     type: string
     required: false
     description: Observed field `payload_conditions` from flattened JSONL profile.
+    enum:
+    - '["Monthly financial reporting required", "Personal guarantee from principal"]'
+    - '["Monthly financial reporting required"]'
+    - '[]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -2166,6 +2346,9 @@ schema:
     type: string
     required: false
     description: Observed field `payload_key_risks` from flattened JSONL profile.
+    enum:
+    - '[]'
+    - '["Revenue trend requires monitoring"]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -2181,6 +2364,8 @@ schema:
     required: false
     description: Observed field `payload_contributing_sessions` from flattened JSONL
       profile.
+    enum:
+    - '[]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -2195,6 +2380,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_model_versions` from flattened JSONL profile.
+    enum:
+    - '{"orchestrator": "claude-sonnet-4-20250514"}'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -2209,6 +2396,7 @@ schema:
     type: string
     required: false
     description: Observed field `payload_generated_at` from flattened JSONL profile.
+    format: date-time
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2261,6 +2449,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_approved_by` from flattened JSONL profile.
+    enum:
+    - auto
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2275,6 +2465,8 @@ schema:
     type: string
     required: false
     description: Observed field `payload_effective_date` from flattened JSONL profile.
+    enum:
+    - '2026-03-20'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2289,6 +2481,12 @@ schema:
     type: string
     required: false
     description: Observed field `payload_approved_at` from flattened JSONL profile.
+    format: date-time
+    enum:
+    - '2026-02-24T11:23:58.813168'
+    - '2026-03-09T22:50:33.817550'
+    - '2026-02-22T05:27:53.826207'
+    - '2026-02-25T11:51:03.830172'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2303,6 +2501,10 @@ schema:
     type: string
     required: false
     description: Observed field `payload_failure_reason` from flattened JSONL profile.
+    enum:
+    - OFAC Sanctions check failed.
+    - Bank Secrecy Act (BSA) check failed.
+    - Jurisdiction Eligibility check failed.
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2317,6 +2519,9 @@ schema:
     type: string
     required: false
     description: Observed field `payload_is_hard_block` from flattened JSONL profile.
+    enum:
+    - 'True'
+    - 'False'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2332,6 +2537,9 @@ schema:
     required: false
     description: Observed field `payload_remediation_available` from flattened JSONL
       profile.
+    enum:
+    - 'False'
+    - 'True'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2366,6 +2574,10 @@ schema:
     type: string
     required: false
     description: Observed field `payload_decline_reasons` from flattened JSONL profile.
+    enum:
+    - '["Compliance hard block: REG-002"]'
+    - '["Insufficient debt service coverage", "High leverage"]'
+    - '["Compliance hard block: REG-003"]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -2380,6 +2592,9 @@ schema:
     type: string
     required: false
     description: Observed field `payload_declined_by` from flattened JSONL profile.
+    enum:
+    - compliance-system
+    - auto
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2395,6 +2610,8 @@ schema:
     required: false
     description: Observed field `payload_adverse_action_notice_required` from flattened
       JSONL profile.
+    enum:
+    - 'True'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2410,6 +2627,9 @@ schema:
     required: false
     description: Observed field `payload_adverse_action_codes` from flattened JSONL
       profile.
+    enum:
+    - '["COMPLIANCE_BLOCK"]'
+    - '["HIGH_DEBT_BURDEN"]'
     string_shape:
       alnum_prefix_ratio: 0.0
       looks_like_url_or_path_ratio: 0.0
@@ -2424,6 +2644,12 @@ schema:
     type: string
     required: false
     description: Observed field `payload_declined_at` from flattened JSONL profile.
+    format: date-time
+    enum:
+    - '2026-02-27T17:49:29.821931'
+    - '2026-03-09T02:44:34.888466'
+    - '2026-03-11T04:26:59.893177'
+    - '2026-02-22T07:55:24.897873'
     string_shape:
       alnum_prefix_ratio: 1.0
       looks_like_url_or_path_ratio: 0.0
@@ -2458,60 +2684,87 @@ quality:
     - accepted_values(schema_version) in [1.0]
     - missing_count(occurred_at) = 0
     - missing_count(recorded_at) = 0
+    - accepted_values(payload_submission_channel) in [branch,web,mobile,agent]
     - missing_count(metadata_correlation_id) = 0
     - missing_count(metadata_user_id) = 0
     - missing_count(metadata_source_service) = 0
+    - accepted_values(payload_required_document_types) in [["application_proposal",
+      "income_statement", "balance_sheet"]]
+    - accepted_values(payload_required_documents) in [["application_proposal", "income_statement",
+      "balance_sheet"]]
+    - accepted_values(payload_document_type) in [application_proposal,income_statement,balance_sheet]
+    - accepted_values(payload_document_format) in [pdf,xlsx]
+    - accepted_values(payload_file_hash) in [8eb66e9cbdaaa5ba,d794b166001141a2,a86210f5fdceb84f,3a3a2439911766f6]
+    - accepted_values(payload_uploaded_by) in [applicant]
+    - accepted_values(payload_agent_type) in [document_processing,credit_analysis,fraud_detection,compliance,decision_orchestrator]
+    - accepted_values(payload_agent_id) in [doc-agent-1,credit-agent-1,fraud-agent-1,compliance-agent-1,orchestrator-1]
+    - accepted_values(payload_model_version) in [claude-sonnet-4-20250514]
+    - accepted_values(payload_langgraph_graph_version) in [1.0.0-sim]
+    - accepted_values(payload_context_source) in [fresh]
+    - accepted_values(payload_inputs_validated) in [["application_id", "document_ids",
+      "applicant_registry_access"],["application_id", "document_package_id", "applicant_id"],["application_id",
+      "extracted_facts_events", "registry_access"],["application_id", "company_profile",
+      "regulation_set_version"],["application_id", "credit_stream", "fraud_stream",
+      "compliance_stream"]]
+    - accepted_values(payload_llm_called) in [False,True]
+    - accepted_values(payload_detected_format) in [pdf]
+    - accepted_values(payload_pipeline_version) in [week3-v1.0]
+    - accepted_values(payload_extraction_model) in [mineru-1.0]
+    - accepted_values(payload_tool_name) in [week3_extraction_pipeline,query_applicant_registry]
     - min(payload_overall_confidence) >= 0.0
     - max(payload_overall_confidence) <= 1.0
+    - accepted_values(payload_is_coherent) in [True]
+    - accepted_values(payload_anomalies) in [[]]
+    - accepted_values(payload_critical_missing_fields) in [[]]
+    - accepted_values(payload_reextraction_recommended) in [False]
+    - accepted_values(payload_auditor_notes) in [Financial statements appear internally
+      consistent. Balance sheet balances. Revenue consistent with prior year trajectory.]
+    - accepted_values(payload_has_quality_flags) in [False]
+    - accepted_values(payload_next_agent_triggered) in [credit_analysis,fraud_detection,compliance,decision_orchestrator]
+    - accepted_values(payload_priority) in [NORMAL]
+    - accepted_values(payload_fiscal_years_loaded) in [[2022, 2023, 2024]]
+    - accepted_values(payload_has_prior_loans) in [True]
+    - accepted_values(payload_has_defaults) in [False]
+    - accepted_values(payload_revenue_trajectory) in [STABLE,VOLATILE,RECOVERING,GROWTH,DECLINING]
+    - accepted_values(payload_quality_flags_present) in [False]
+    - accepted_values(payload_regulatory_basis) in [[]]
+    - accepted_values(payload_screening_model_version) in [claude-sonnet-4-20250514]
+    - accepted_values(payload_risk_level) in [LOW,MEDIUM]
+    - accepted_values(payload_recommendation) in [PROCEED,APPROVE,DECLINE,REFER]
+    - accepted_values(payload_regulation_set_version) in [2026-Q1]
+    - accepted_values(payload_rules_to_evaluate) in [["REG-001", "REG-002", "REG-003",
+      "REG-004", "REG-005", "REG-006"]]
+    - accepted_values(payload_rule_version) in [2026-Q1-v1]
+    - 'accepted_values(payload_evaluation_notes) in [Bank Secrecy Act (BSA): Clear.,OFAC
+      Sanctions: Clear.,Jurisdiction Eligibility: Clear.,Legal Entity Eligibility:
+      Clear.,Operating History: Clear.]'
+    - accepted_values(payload_note_type) in [CRA_CONSIDERATION]
+    - accepted_values(payload_note_text) in [Applicant jurisdiction qualifies for
+      CRA consideration.]
+    - accepted_values(payload_has_hard_block) in [False,True]
+    - accepted_values(payload_overall_verdict) in [CLEAR,BLOCKED,CONDITIONAL]
+    - accepted_values(payload_all_analyses_complete) in [True]
     - min(payload_confidence) >= 0.0
     - max(payload_confidence) <= 1.0
-profiling_metadata:
-  generated_at: '2026-04-04T11:25:52.838493+00:00'
-  rows_profiled: 1198
-  columns_profiled: 158
-  source_jsonl: C:/Users/Administrator/Desktop/Data Contract Enforcer/outputs/week5/events.jsonl
-  profiling_engine: pandas+jsonl_flatten+ydata_profiling
-  confidence_0_1_enforced_fields:
-  - payload_overall_confidence
-  - payload_confidence
-  numeric_fields_with_mean_stddev:
-  - payload_analysis_duration_ms
-  - payload_anomalies_found
-  - payload_confidence
-  - payload_context_token_count
-  - payload_documents_processed
-  - payload_duration_ms
-  - payload_file_size_bytes
-  - payload_fiscal_year
-  - payload_fraud_score
-  - payload_interest_rate_pct
-  - payload_llm_cost_usd
-  - payload_llm_tokens_input
-  - payload_llm_tokens_output
-  - payload_loan_term_months
-  - payload_node_sequence
-  - payload_overall_confidence
-  - payload_page_count
-  - payload_processing_ms
-  - payload_quality_flag_count
-  - payload_raw_text_length
-  - payload_remediation_description
-  - payload_rules_evaluated
-  - payload_rules_failed
-  - payload_rules_noted
-  - payload_rules_passed
-  - payload_tables_extracted
-  - payload_term_months
-  - payload_tool_duration_ms
-  - payload_total_cost_usd
-  - payload_total_duration_ms
-  - payload_total_llm_calls
-  - payload_total_nodes_executed
-  - payload_total_tokens_used
-  - payload_validation_duration_ms
-  - sequence_number
-  profiling_evidence_artifact: week5_events_profiling_evidence.json
-  runner_baselines_persisted: true
+    - accepted_values(payload_approved_amount_usd) in [202000.0,913000.0,2410000.0,1286000.0]
+    - accepted_values(payload_conditions) in [["Monthly financial reporting required",
+      "Personal guarantee from principal"],["Monthly financial reporting required"],[]]
+    - accepted_values(payload_key_risks) in [[],["Revenue trend requires monitoring"]]
+    - accepted_values(payload_contributing_sessions) in [[]]
+    - 'accepted_values(payload_model_versions) in [{"orchestrator": "claude-sonnet-4-20250514"}]'
+    - accepted_values(payload_approved_by) in [auto]
+    - accepted_values(payload_effective_date) in [2026-03-20]
+    - accepted_values(payload_approved_at) in [2026-02-24T11:23:58.813168,2026-03-09T22:50:33.817550,2026-02-22T05:27:53.826207,2026-02-25T11:51:03.830172]
+    - accepted_values(payload_failure_reason) in [OFAC Sanctions check failed.,Bank
+      Secrecy Act (BSA) check failed.,Jurisdiction Eligibility check failed.]
+    - accepted_values(payload_is_hard_block) in [True,False]
+    - accepted_values(payload_remediation_available) in [False,True]
+    - 'accepted_values(payload_decline_reasons) in [["Compliance hard block: REG-002"],["Insufficient
+      debt service coverage", "High leverage"],["Compliance hard block: REG-003"]]'
+    - accepted_values(payload_declined_by) in [compliance-system,auto]
+    - accepted_values(payload_adverse_action_notice_required) in [True]
+    - accepted_values(payload_adverse_action_codes) in [["COMPLIANCE_BLOCK"],["HIGH_DEBT_BURDEN"]]
+    - accepted_values(payload_declined_at) in [2026-02-27T17:49:29.821931,2026-03-09T02:44:34.888466,2026-03-11T04:26:59.893177,2026-02-22T07:55:24.897873]
 lineage:
   upstream:
   - id: week3-document-refinery

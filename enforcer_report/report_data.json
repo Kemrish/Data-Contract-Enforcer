@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-04-03T16:04:11.983904+00:00",
+  "generated_at": "2026-04-03T18:08:09.088974+00:00",
   "period": "2026-03-27 to 2026-04-03",
-  "data_health_score": 64,
-  "health_narrative": "Data health score 64/100 based on 4 validation report(s). Attention required: 1 critical issue(s).",
+  "data_health_score": 100,
+  "health_narrative": "Data health score 100/100 based on 5 validation report(s). All monitored checks within configured thresholds.",
   "registry_validation": {
     "coverage_ok": true,
     "warnings": [],
@@ -16,12 +16,12 @@
   },
   "violations_this_week": {
     "by_severity": {
-      "CRITICAL": 1,
-      "HIGH": 1,
+      "CRITICAL": 0,
+      "HIGH": 0,
       "MEDIUM": 0,
       "LOW": 0
     },
-    "total_failed_checks": 2,
+    "total_failed_checks": 0,
     "violation_log_entries": 3,
     "violation_log_plain_language": [
       "[contract_validation] week3-document-refinery-extractions: week3-document-refinery-extractions.fact_confidence.range \u2014 injection_note=True",
@@ -29,15 +29,12 @@
       "[contract_validation] week5-event-records: week5-event-records.event_type.enum \u2014 injection_note=False"
     ]
   },
-  "top_violations_plain_language": [
-    "System contract `week3-document-refinery-extractions`: field 'fact_confidence' failed range check. Expected min>=0.0, max<=1.0; observed min=62.2, max=98.9, mean=81.591. Downstream subscribers: week4-brownfield-cartographer. Failing records (approx): 240.",
-    "System contract `week3-document-refinery-extractions`: field 'fact_confidence' failed statistical_drift check. Expected <=2 warn, <=3 fail threshold; observed z=738.44. Downstream subscribers: week4-brownfield-cartographer. Failing records (approx): 0."
-  ],
+  "top_violations_plain_language": [],
   "schema_changes_detected_plain_language": [
     "No breaking schema deltas in the compared snapshot pair.",
-    "Overall compatibility: COMPATIBLE. See 2026-04-03T12:12:44.890358+00:00 migration file for checklist and rollback."
+    "Overall compatibility: COMPATIBLE. See 2026-04-03T18:03:40.384704+00:00 migration file for checklist and rollback."
   ],
-  "schema_changes_summary": "No breaking schema deltas in the compared snapshot pair. Overall compatibility: COMPATIBLE. See 2026-04-03T12:12:44.890358+00:00 migration file for checklist and rollback.",
+  "schema_changes_summary": "No breaking schema deltas in the compared snapshot pair. Overall compatibility: COMPATIBLE. See 2026-04-03T18:03:40.384704+00:00 migration file for checklist and rollback.",
   "ai_risk_assessment": {
     "embedding_drift": {
       "status": "SKIP",
@@ -46,7 +43,7 @@
       "threshold": 0.15
     },
     "prompt_input_validation": {
-      "valid_count": 60,
+      "valid_count": 47,
       "quarantined_count": 0,
       "status": "PASS"
     },
@@ -87,7 +84,10 @@
     "validation_reports": [
       "validation_reports\\ai_extensions.json",
       "validation_reports\\clean_week3.json",
+      "validation_reports\\clean_week4.json",
+      "validation_reports\\clean_week5.json",
       "validation_reports\\migration_impact_week3-document-refinery-extractions_20260403_121244.json",
+      "validation_reports\\migration_impact_week3-document-refinery-extractions_20260403_180340.json",
       "validation_reports\\schema_evolution.json",
       "validation_reports\\thursday_baseline.json",
       "validation_reports\\violated_week3.json",

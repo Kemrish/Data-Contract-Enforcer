@@ -1,0 +1,291 @@
+{
+  "contract_id": "week3-document-refinery-extractions",
+  "source_jsonl": "C:/Users/Administrator/Desktop/Data Contract Enforcer/outputs/week3/extractions.jsonl",
+  "generated_at": "2026-04-04T11:25:51.841062+00:00",
+  "rows_profiled": 47,
+  "columns_profiled": 14,
+  "profiling_engine": "pandas+jsonl_flatten+ydata_profiling",
+  "confidence_0_1_contract_clauses_on": [
+    "fact_confidence"
+  ],
+  "numeric_column_mean_stddev": {
+    "processing_time_ms": {
+      "mean": 1145.9574468085107,
+      "stddev": 3430.3644372082254
+    },
+    "token_count_input": {
+      "mean": 0.0,
+      "stddev": 0.0
+    },
+    "token_count_output": {
+      "mean": 0.0,
+      "stddev": 0.0
+    },
+    "fact_confidence": {
+      "mean": 0.5882595744680852,
+      "stddev": 0.3691339975034249
+    },
+    "fact_page_ref": {
+      "mean": 1.0,
+      "stddev": 0.0
+    }
+  },
+  "columns": {
+    "doc_id": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 47,
+      "sample_values": [
+        "6733a510-cf53-596e-bc16-e3748d16b692",
+        "ffc7c454-9f6f-5b80-9193-4f5f212acd09",
+        "38e3644e-16d8-597d-9aea-1505e4806d9a",
+        "818ddbb2-0a35-5fc4-a8f5-6c9b92965ece",
+        "2ed443d5-0c58-54cd-9095-f14b07656d30"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 1.0,
+        "dominant_pattern": "uuid_like"
+      }
+    },
+    "source_path": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 47,
+      "sample_values": [
+        "Annual_Report_JUNE-2017.pdf",
+        "Annual_Report_JUNE-2018.pdf",
+        "Annual_Report_JUNE-2019.pdf",
+        "2013-E.C-Audit-finding-information.pdf",
+        "2018_Audited_Financial_Statement_Report.pdf"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "source_hash": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 47,
+      "sample_values": [
+        "a1e799d98fd3c4701dd9f699ded70badf672c6e8fbde5199ed811072aaa7a8d1",
+        "8e6bb74bebf36399ab7050812a98b0c33b4c7a2f82a91c8ea8cd202713dffe82",
+        "915734cebcaf2b5fdf599464a852c6daefd330505bcdd049014264fa193fa21c",
+        "f1f49d0d861f5c2f90989c036239ccf12c0b7d57db353ef08deb7e34842f1b83",
+        "05d88c125f0bf8ec8fac9591478360cb2a1b793e5efb3054bec9b7f895f0fe85"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "extraction_model": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 4,
+      "sample_values": [
+        "layout_aware",
+        "vision_augmented",
+        "needs_vision_model",
+        "needs_layout_model"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "processing_time_ms": {
+      "dtype": "int64",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 11,
+      "sample_values": [
+        "9819",
+        "8752",
+        "6225",
+        "5",
+        "4"
+      ],
+      "stats": {
+        "min": 0.0,
+        "max": 18441.0,
+        "mean": 1145.9574468085107,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 2.0,
+        "p95": 7993.899999999989,
+        "p99": 14474.879999999994,
+        "stddev": 3430.3644372082254
+      }
+    },
+    "extracted_at": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 9,
+      "sample_values": [
+        "2026-03-04T05:45:22Z",
+        "2026-03-04T05:45:39Z",
+        "2026-03-04T05:45:49Z",
+        "2026-03-04T05:45:50Z",
+        "2026-03-04T05:46:24Z"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "token_count_input": {
+      "dtype": "int64",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "0"
+      ],
+      "stats": {
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "stddev": 0.0
+      }
+    },
+    "token_count_output": {
+      "dtype": "int64",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "0"
+      ],
+      "stats": {
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "stddev": 0.0
+      }
+    },
+    "fact_fact_id": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 47,
+      "sample_values": [
+        "b506c83e-aa4b-4e84-83ed-a7ba50932c17",
+        "4caaa6b8-47d2-4def-99ab-87966b46992b",
+        "4e386673-1777-4341-8b78-5617d45a2326",
+        "e42e9871-b19d-4518-ae60-059d99debd21",
+        "6cefaf3d-928b-4448-9735-f47f5815d4c1"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 1.0,
+        "dominant_pattern": "uuid_like"
+      }
+    },
+    "fact_text": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 47,
+      "sample_values": [
+        "Ledger extraction run for Annual_Report_JUNE-2017.pdf",
+        "Ledger extraction run for Annual_Report_JUNE-2018.pdf",
+        "Ledger extraction run for Annual_Report_JUNE-2019.pdf",
+        "Ledger extraction run for 2013-E.C-Audit-finding-information.pdf",
+        "Ledger extraction run for 2018_Audited_Financial_Statement_Report.pdf"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 1.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "alphanumeric_text"
+      }
+    },
+    "fact_entity_refs": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "[]"
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    },
+    "fact_confidence": {
+      "dtype": "float64",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 12,
+      "sample_values": [
+        "0.8608",
+        "0.8775",
+        "0.443",
+        "0.0732",
+        "0.6382"
+      ],
+      "stats": {
+        "min": 0.0731,
+        "max": 0.9539,
+        "mean": 0.5882595744680852,
+        "p25": 0.091,
+        "p50": 0.6382,
+        "p75": 0.9483,
+        "p95": 0.9483,
+        "p99": 0.951324,
+        "stddev": 0.3691339975034249
+      }
+    },
+    "fact_page_ref": {
+      "dtype": "int64",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        "1"
+      ],
+      "stats": {
+        "min": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "p25": 1.0,
+        "p50": 1.0,
+        "p75": 1.0,
+        "p95": 1.0,
+        "p99": 1.0,
+        "stddev": 0.0
+      }
+    },
+    "fact_source_excerpt": {
+      "dtype": "object",
+      "null_fraction": 0.0,
+      "cardinality_estimate": 1,
+      "sample_values": [
+        ""
+      ],
+      "string_shape": {
+        "alnum_prefix_ratio": 0.0,
+        "looks_like_url_or_path_ratio": 0.0,
+        "looks_like_uuid_ratio": 0.0,
+        "dominant_pattern": "mixed"
+      }
+    }
+  }
+}

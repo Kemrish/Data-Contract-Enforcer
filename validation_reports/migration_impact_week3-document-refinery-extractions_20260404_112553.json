@@ -1,8 +1,15 @@
 {
   "contract_id": "week3-document-refinery-extractions",
-  "analyzed_at": "2026-04-04T11:25:53.252434+00:00",
+  "generated_at": "2026-04-04T11:25:53.252434+00:00",
   "snapshot_old": "C:\\Users\\Administrator\\Desktop\\Data Contract Enforcer\\schema_snapshots\\week3-document-refinery-extractions\\20260404_112026.yaml",
   "snapshot_new": "C:\\Users\\Administrator\\Desktop\\Data Contract Enforcer\\schema_snapshots\\week3-document-refinery-extractions\\20260404_112551.yaml",
+  "compatibility_summary": {
+    "breaking_changes": 0,
+    "compatible_changes": 14,
+    "critical_changes": 0,
+    "overall": "COMPATIBLE"
+  },
+  "critical_schema_changes": [],
   "changes": [
     {
       "field": "doc_id",
@@ -103,6 +110,52 @@
       "taxonomy_class": "unchanged"
     }
   ],
-  "critical_schema_changes": [],
-  "migration_impact_file": "validation_reports\\migration_impact_week3-document-refinery-extractions_20260404_112553.json"
+  "breaking_changes": [],
+  "blast_radius": {
+    "subscriber_count": 1,
+    "source": "C:\\Users\\Administrator\\Desktop\\Data Contract Enforcer\\contract_registry\\subscriptions.yaml",
+    "subscribers": [
+      {
+        "subscriber_id": "week4-brownfield-cartographer",
+        "subscriber_team": "week4",
+        "fields_consumed": [
+          "doc_id",
+          "extracted_facts",
+          "extraction_model"
+        ],
+        "breaking_fields_count": 2,
+        "validation_mode": "ENFORCE"
+      }
+    ],
+    "lineage_edges_count": 31,
+    "lineage_nodes_count": 34,
+    "lineage_file": "C:\\Users\\Administrator\\Desktop\\Data Contract Enforcer\\outputs\\week4\\lineage_snapshots.jsonl",
+    "affected_subscriber_count": 1,
+    "metric_notes": "affected_subscriber_count from registry; lineage_* from week4 snapshot when present."
+  },
+  "migration_checklist": [
+    "Notify 1 registered subscriber(s) in C:/Users/Administrator/Desktop/Data Contract Enforcer/contract_registry/subscriptions.yaml",
+    "Update ValidationRunner baselines after intentional migration",
+    "Re-run ContractGenerator on representative JSONL for this contract_id",
+    "Coordinate deployment order: producer first, consumers second"
+  ],
+  "rollback_plan": [
+    "Revert producer deploy to prior git tag",
+    "Restore previous schema snapshot from schema_snapshots/",
+    "Re-import prior baselines.json entry for this contract_id"
+  ],
+  "per_consumer_failure_modes": [
+    {
+      "subscriber_id": "week4-brownfield-cartographer",
+      "if_field": "extracted_facts.confidence",
+      "failure": "ranking and filtering assume 0.0\u20131.0 scale",
+      "source": "contract_registry"
+    },
+    {
+      "subscriber_id": "week4-brownfield-cartographer",
+      "if_field": "doc_id",
+      "failure": "node identity for document-derived lineage nodes",
+      "source": "contract_registry"
+    }
+  ]
 }

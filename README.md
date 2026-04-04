@@ -17,6 +17,31 @@ Expected: integer ≥ 4.
 
 ---
 
+### Step 0.5 — Real outputs from your Week 3 / 4 / 5 repos (optional)
+
+If **doc-refinery**, **Brownfield-Cartographer**, and **The Ledger** live next to this repo on the Desktop, sync their artifacts into `outputs/`:
+
+```bash
+python scripts/sync_upstream_outputs.py
+```
+
+The script looks for:
+
+| Source | Default path tried |
+|--------|---------------------|
+| Week 3 — extraction ledger | `../doc-refinery/.refinery/extraction_ledger.jsonl` or `upstream/doc-refinery/.refinery/extraction_ledger.jsonl` |
+| Week 4 — lineage graph | `../TRP1/New folder/Brownfield-Cartographer/**/.cartography/lineage_graph.json` or `upstream/brownfield-cartographer/...` |
+| Week 5 — domain events | `../The Ledger/data/seed_events.jsonl` or `upstream/the-ledger/data/seed_events.jsonl` |
+
+Overrides: `--doc-refinery`, `--cartographer`, `--ledger` (each is the **project root**).
+
+Writes: `outputs/week3/extractions.jsonl`, `outputs/week4/lineage_snapshots.jsonl` (one snapshot line), `outputs/week5/events.jsonl`.  
+**Then re-run Step 1** for week 3, 4, and 5 so generated YAML matches the new data (especially week 5 event types).
+
+To pin the repos *inside* this workspace, clone or junction them as `upstream/doc-refinery`, `upstream/brownfield-cartographer`, and `upstream/the-ledger` (see `upstream/.gitkeep`).
+
+---
+
 ### Step 1 — ContractGenerator
 
 Generates Bitol-style YAML + dbt + `schema_snapshots/<contract_id>/<timestamp>.yaml`.
@@ -40,10 +65,13 @@ python contracts/generator.py --source outputs/traces/runs.jsonl --output genera
 Expected (examples):
 
 - `generated_contracts/week3_extractions.yaml` and `week3_extractions_dbt.yml`
+- **`generated_contracts/week3_extractions_profiling_evidence.json`** — row/column counts, per-column dtypes/null rates, numeric **mean/stddev/p95**, `confidence_0_1_contract_clauses_on`, and full audit trail from the JSONL (not template-only).
+- YAML includes **`profiling_metadata`** (summary + pointer to the evidence file).
+- Numeric means/stddev are **merged into** `schema_snapshots/baselines.json` for that `contract_id` (same shape ValidationRunner uses), unless `--no-persist-runner-baselines`.
 - Console: `Contract written: ...` and `Schema fields: N`
 - New file under `schema_snapshots/week3-document-refinery-extractions/*.yaml`
 
-Optional: `--no-ydata` (faster), `--no-llm` (skip Anthropic blurbs; set `ANTHROPIC_API_KEY` for LLM annotations).
+Optional: `--no-ydata` (faster), `--no-llm` (skip Anthropic blurbs; set `ANTHROPIC_API_KEY` for LLM annotations), `--no-profiling-evidence-json`, `--no-persist-runner-baselines`.
 
 ---
 
@@ -98,7 +126,13 @@ Diffs two snapshots under `schema_snapshots/<contract_id>/` (or pass explicit pa
 python contracts/schema_analyzer.py --contract-id week3-document-refinery-extractions --output validation_reports/schema_evolution.json
 ```
 
-Expected: `validation_reports/schema_evolution.json` and `validation_reports/migration_impact_week3-document-refinery-extractions_<timestamp>.json` with breaking/compatible classification and migration checklist.
+Expected: `validation_reports/schema_evolution.json` and `validation_reports/migration_impact_<contract>_<timestamp>.json` with:
+
+- Per-field **taxonomy** + **severity** (`CRITICAL` for narrow type / scale regressions, e.g. probability float 0–1 → integer 0–100).
+- **`blast_radius`**: `affected_subscriber_count` from `contract_registry/subscriptions.yaml`, plus optional lineage graph counts from `--lineage` (default `outputs/week4/lineage_snapshots.jsonl`).
+- **`per_consumer_failure_modes`** built from registry `breaking_fields` (not static examples only).
+
+Optional: `--registry path/to/subscriptions.yaml`, `--lineage path` or a missing file to skip graph metrics.
 
 ---
 
@@ -143,7 +177,7 @@ Confirm:
 | `contracts/ai_extensions.py` | Embedding / prompt / verdict checks |
 | `contracts/report_generator.py` | Enforcer report JSON |
 | `contract_registry/subscriptions.yaml` | Blast-radius registry |
-| `generated_contracts/` | Generated YAML + dbt |
+| `generated_contracts/` | Generated YAML + dbt + `*_profiling_evidence.json` (data-driven audit) |
 | `validation_reports/` | Runner + AI + schema evolution outputs |
 | `violation_log/violations.jsonl` | Violation records (first line may be `#` documentation) |
 | `schema_snapshots/` | Timestamped contracts + `baselines.json` |

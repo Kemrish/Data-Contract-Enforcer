@@ -1,0 +1,107 @@
+{
+  "contract_id": "week3-document-refinery-extractions",
+  "generated_at": "2026-04-03T18:08:19.042432+00:00",
+  "snapshot_old": "C:\\Users\\Administrator\\Desktop\\Data Contract Enforcer\\schema_snapshots\\week3-document-refinery-extractions\\20260403_180302.yaml",
+  "snapshot_new": "C:\\Users\\Administrator\\Desktop\\Data Contract Enforcer\\schema_snapshots\\week3-document-refinery-extractions\\20260403_180606.yaml",
+  "compatibility_summary": {
+    "breaking_changes": 1,
+    "compatible_changes": 13,
+    "overall": "BREAKING"
+  },
+  "changes": [
+    {
+      "field": "doc_id",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to doc_id"
+    },
+    {
+      "field": "extracted_at",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to extracted_at"
+    },
+    {
+      "field": "extraction_model",
+      "verdict": "BREAKING",
+      "message": "Regex/pattern changed for extraction_model"
+    },
+    {
+      "field": "fact_confidence",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_confidence"
+    },
+    {
+      "field": "fact_entity_refs",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_entity_refs"
+    },
+    {
+      "field": "fact_fact_id",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_fact_id"
+    },
+    {
+      "field": "fact_page_ref",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_page_ref"
+    },
+    {
+      "field": "fact_source_excerpt",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_source_excerpt"
+    },
+    {
+      "field": "fact_text",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to fact_text"
+    },
+    {
+      "field": "processing_time_ms",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to processing_time_ms"
+    },
+    {
+      "field": "source_hash",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to source_hash"
+    },
+    {
+      "field": "source_path",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to source_path"
+    },
+    {
+      "field": "token_count_input",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to token_count_input"
+    },
+    {
+      "field": "token_count_output",
+      "verdict": "COMPATIBLE",
+      "message": "No material structural change to token_count_output"
+    }
+  ],
+  "breaking_changes": [
+    {
+      "field": "extraction_model",
+      "message": "Regex/pattern changed for extraction_model"
+    }
+  ],
+  "migration_checklist": [
+    "Notify all subscribers in contract_registry/subscriptions.yaml",
+    "Update ValidationRunner baselines after intentional migration",
+    "Re-run ContractGenerator on representative data",
+    "Coordinate deployment order: producer first, consumers second"
+  ],
+  "rollback_plan": [
+    "Revert producer deploy to prior git tag",
+    "Restore previous schema snapshot from schema_snapshots/",
+    "Re-import prior baselines.json entry for this contract_id"
+  ],
+  "per_consumer_failure_modes": [
+    {
+      "subscriber": "week4-brownfield-cartographer",
+      "if_field": "extracted_facts.confidence",
+      "failure": "Ranking and thresholds interpret confidence as 0-1 probability; 0-100 scale corrupts ordering"
+    }
+  ]
+}

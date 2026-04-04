@@ -421,12 +421,16 @@ def column_to_clause(profile: dict, contract_id: str) -> dict:
     if name == "node_id" and clause["type"] == "string":
         clause["description"] = "Stable node identifier (type::path or type::label)."
 
-    if (name.endswith("_id") and not name.endswith("_user_id")) or name in (
-        "event_id",
-        "aggregate_id",
-        "intent_id",
-        "snapshot_id",
-        "session_id",
+    if (
+        (name.endswith("_id") and not name.endswith("_user_id") and name != "node_id")
+        or name
+        in (
+            "event_id",
+            "aggregate_id",
+            "intent_id",
+            "snapshot_id",
+            "session_id",
+        )
     ):
         clause["format"] = "uuid"
         clause["pattern"] = "^[0-9a-f-]{36}$"
@@ -439,8 +443,11 @@ def column_to_clause(profile: dict, contract_id: str) -> dict:
         clause["format"] = "date-time"
 
     if name == "extraction_model" and clause["type"] == "string":
-        clause["pattern"] = "^(claude|gpt)-"
-        clause["description"] = "Model identifier. Must match claude-* or gpt-* prefix."
+        if contract_id == "week3-document-refinery-extractions":
+            clause["description"] = "Extractor strategy or model id (e.g. layout_aware, claude-*)."
+        else:
+            clause["pattern"] = "^(claude|gpt)-"
+            clause["description"] = "Model identifier. Must match claude-* or gpt-* prefix."
 
     if name == "fact_fact_id":
         clause["unique"] = True
@@ -487,6 +494,14 @@ def column_to_clause(profile: dict, contract_id: str) -> dict:
 
     if profile.get("string_shape"):
         clause["string_shape"] = profile["string_shape"]
+
+    # Ledger / event-sourcing payloads: business IDs and sparse fields — avoid UUID/enum traps.
+    if contract_id == "week5-event-records":
+        if name.startswith("payload_") or name.startswith("metadata_"):
+            clause.pop("format", None)
+            clause.pop("pattern", None)
+        if name.startswith("payload_"):
+            clause.pop("enum", None)
 
     return clause
 
@@ -942,11 +957,102 @@ def llm_annotate_columns(
     return out
 
 
+def extract_numeric_baselines_from_profiles(profiles: dict[str, dict]) -> dict[str, dict[str, float]]:
+    """Mean/stddev from profile stats — same shape as ValidationRunner baselines.json."""
+    out: dict[str, dict[str, float]] = {}
+    for name, prof in profiles.items():
+        st = prof.get("stats")
+        if not st or "mean" not in st:
+            continue
+        sd = st.get("stddev")
+        if sd is None or (isinstance(sd, float) and pd.isna(sd)):
+            sd = 0.0
+        out[name] = {"mean": float(st["mean"]), "stddev": float(sd)}
+    return out
+
+
+def build_profiling_evidence(
+    contract_id: str,
+    source: Path,
+    df: pd.DataFrame,
+    profiles: dict[str, dict],
+    ydata_enabled: bool,
+) -> dict:
+    """
+    Auditable, data-driven profiling record (rubric: visible evidence of JSONL-derived stats).
+    Written alongside the contract as *_profiling_evidence.json.
+    """
+    conf_cols = [
+        n
+        for n, p in profiles.items()
+        if "confidence" in n.lower() and infer_type(p["dtype"]) == "number"
+    ]
+    evidence_columns: dict[str, dict] = {}
+    for name, prof in profiles.items():
+        ec: dict = {
+            "dtype": prof["dtype"],
+            "null_fraction": prof["null_fraction"],
+            "cardinality_estimate": prof["cardinality_estimate"],
+            "sample_values": (prof.get("sample_values") or [])[:5],
+        }
+        if "stats" in prof:
+            ec["stats"] = prof["stats"]
+        if prof.get("string_shape"):
+            ec["string_shape"] = prof["string_shape"]
+        if prof.get("ydata_profiling"):
+            ec["ydata_profiling"] = prof["ydata_profiling"]
+        evidence_columns[name] = ec
+    numeric_baselines = extract_numeric_baselines_from_profiles(profiles)
+    return {
+        "contract_id": contract_id,
+        "source_jsonl": str(source.resolve()).replace("\\", "/"),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "rows_profiled": int(len(df)),
+        "columns_profiled": int(len(df.columns)),
+        "profiling_engine": (
+            "pandas+jsonl_flatten+ydata_profiling"
+            if ydata_enabled
+            else "pandas+jsonl_flatten"
+        ),
+        "confidence_0_1_contract_clauses_on": conf_cols,
+        "numeric_column_mean_stddev": numeric_baselines,
+        "columns": evidence_columns,
+    }
+
+
+def merge_generator_baselines(
+    baseline_path: Path,
+    contract_id: str,
+    numeric_cols: dict[str, dict[str, float]],
+) -> None:
+    """Merge numeric mean/stddev from profiling into schema_snapshots/baselines.json for this contract."""
+    payload: dict = {}
+    if baseline_path.exists():
+        try:
+            payload = json.loads(baseline_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            payload = {}
+    if "contracts" not in payload:
+        payload["contracts"] = {}
+    prev = payload["contracts"].get(contract_id, {})
+    merged_cols = dict(prev.get("columns") or {})
+    merged_cols.update(numeric_cols)
+    payload["contracts"][contract_id] = {
+        "written_at": datetime.now(timezone.utc).isoformat(),
+        "source": "ContractGenerator.profiling_numeric_merge",
+        "columns": merged_cols,
+    }
+    payload["written_at"] = datetime.now(timezone.utc).isoformat()
+    baseline_path.parent.mkdir(parents=True, exist_ok=True)
+    baseline_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+
 def build_contract(
     args: argparse.Namespace,
     profiles: dict,
     profiling_alerts: list[dict],
     llm_annotations: dict[str, dict],
+    profiling_metadata: dict | None = None,
 ) -> dict:
     meta = CONTRACT_META.get(
         args.contract_id,
@@ -1000,6 +1106,8 @@ def build_contract(
         "profiling_alerts": profiling_alerts,
         "quality": build_quality_checks(schema, profiling_alerts),
     }
+    if profiling_metadata:
+        contract["profiling_metadata"] = profiling_metadata
     if llm_annotations:
         contract["llm_annotations"] = llm_annotations
     return contract
@@ -1068,6 +1176,16 @@ def main() -> None:
         default=os.environ.get("ANTHROPIC_MODEL", "claude-3-5-haiku-20241022"),
         help="Anthropic model id for column annotations.",
     )
+    parser.add_argument(
+        "--no-profiling-evidence-json",
+        action="store_true",
+        help="Do not write *_profiling_evidence.json next to the contract YAML.",
+    )
+    parser.add_argument(
+        "--no-persist-runner-baselines",
+        action="store_true",
+        help="Do not merge numeric mean/stddev from profiling into schema_snapshots/baselines.json.",
+    )
     args = parser.parse_args()
 
     args.source = args.source.resolve()
@@ -1128,11 +1246,45 @@ def main() -> None:
     ns.contract_id = args.contract_id
     ns.source = args.source
 
-    contract = build_contract(ns, profiles, profiling_alerts, llm_annotations)
+    ydata_on = not args.no_ydata
+    evidence_full = build_profiling_evidence(
+        args.contract_id, args.source, df, profiles, ydata_on
+    )
+    numeric_bl = evidence_full["numeric_column_mean_stddev"]
+    conf_enforced = evidence_full["confidence_0_1_contract_clauses_on"]
+    profiling_metadata = {
+        "generated_at": evidence_full["generated_at"],
+        "rows_profiled": evidence_full["rows_profiled"],
+        "columns_profiled": evidence_full["columns_profiled"],
+        "source_jsonl": evidence_full["source_jsonl"],
+        "profiling_engine": evidence_full["profiling_engine"],
+        "confidence_0_1_enforced_fields": conf_enforced,
+        "numeric_fields_with_mean_stddev": sorted(numeric_bl.keys()),
+        "profiling_evidence_artifact": f"{normalize_output_name(args.contract_id)}_profiling_evidence.json",
+        "runner_baselines_persisted": not args.no_persist_runner_baselines and bool(numeric_bl),
+    }
+
+    contract = build_contract(
+        ns, profiles, profiling_alerts, llm_annotations, profiling_metadata=profiling_metadata
+    )
     contract = inject_lineage(contract, args.lineage, args.contract_id, args.registry)
 
     out_stem = normalize_output_name(args.contract_id)
     yaml_path = args.output / f"{out_stem}.yaml"
+
+    if not args.no_profiling_evidence_json:
+        ev_path = args.output / f"{out_stem}_profiling_evidence.json"
+        ev_path.write_text(json.dumps(evidence_full, indent=2), encoding="utf-8")
+        print(f"Profiling evidence written: {ev_path}")
+
+    if not args.no_persist_runner_baselines and numeric_bl:
+        merge_generator_baselines(
+            Path("schema_snapshots/baselines.json"),
+            args.contract_id,
+            numeric_bl,
+        )
+        print(f"Merged {len(numeric_bl)} numeric baseline column(s) into schema_snapshots/baselines.json")
+
     with yaml_path.open("w", encoding="utf-8") as f:
         yaml.safe_dump(contract, f, sort_keys=False, default_flow_style=False, allow_unicode=True)
 

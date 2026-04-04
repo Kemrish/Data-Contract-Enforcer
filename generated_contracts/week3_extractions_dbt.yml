@@ -21,7 +21,7 @@ models:
     tests:
     - not_null
   - name: extraction_model
-    description: Model identifier. Must match claude-* or gpt-* prefix.
+    description: Extractor strategy or model id (e.g. layout_aware, claude-*).
     tests:
     - not_null
   - name: processing_time_ms
@@ -53,6 +53,9 @@ models:
     description: Observed field `fact_entity_refs` from flattened JSONL profile.
     tests:
     - not_null
+    - accepted_values:
+        values:
+        - '[]'
   - name: fact_confidence
     description: Confidence score for extracted facts. Must remain 0.0–1.0 float.
       BREAKING if rescaled to 0–100.

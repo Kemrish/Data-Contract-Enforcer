@@ -1,8 +1,11 @@
 {
-  "report_id": "51eaab1c-0317-44bb-b74a-270068a64f67",
+  "report_id": "41f9a6e6-cb16-4881-909e-edc358b5cda4",
   "contract_id": "week3-document-refinery-extractions",
-  "snapshot_id": "ce9c120cbdbee21b0586a7491cb831c190137e79ef3ec88b28837a14344f312f",
-  "run_timestamp": "2026-04-01T17:59:01.453025+00:00",
+  "snapshot_id": "af1bd852369fa9789592014cf8ceef48944f4d977d5d39111f690372812b9c9f",
+  "run_timestamp": "2026-04-03T18:06:06.879634+00:00",
+  "validation_mode": "AUDIT",
+  "pipeline_action": "PASS",
+  "block_reason": null,
   "total_checks": 33,
   "passed": 33,
   "failed": 0,
@@ -92,18 +95,6 @@
       "records_failing": 0,
       "sample_failing": [],
       "message": "Required field check passed."
-    },
-    {
-      "check_id": "week3-document-refinery-extractions.extraction_model.pattern",
-      "column_name": "extraction_model",
-      "check_type": "pattern",
-      "status": "PASS",
-      "actual_value": "non_matching=0",
-      "expected": "regex ^(claude|gpt)-",
-      "severity": "LOW",
-      "records_failing": 0,
-      "sample_failing": [],
-      "message": "Pattern validation passed."
     },
     {
       "check_id": "week3-document-refinery-extractions.processing_time_ms.required",
@@ -274,6 +265,18 @@
       "message": "Required field check passed."
     },
     {
+      "check_id": "week3-document-refinery-extractions.fact_entity_refs.enum",
+      "column_name": "fact_entity_refs",
+      "check_type": "enum",
+      "status": "PASS",
+      "actual_value": "non_conforming=0",
+      "expected": "in ['[]']",
+      "severity": "LOW",
+      "records_failing": 0,
+      "sample_failing": [],
+      "message": "Enum conformance passed."
+    },
+    {
       "check_id": "week3-document-refinery-extractions.fact_confidence.required",
       "column_name": "fact_confidence",
       "check_type": "required",
@@ -302,7 +305,7 @@
       "column_name": "fact_confidence",
       "check_type": "range",
       "status": "PASS",
-      "actual_value": "min=0.622, max=0.989, mean=0.816",
+      "actual_value": "min=0.0731, max=0.9539, mean=0.588",
       "expected": "min>=0.0, max<=1.0",
       "severity": "LOW",
       "records_failing": 0,

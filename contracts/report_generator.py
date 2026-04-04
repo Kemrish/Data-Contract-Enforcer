@@ -40,6 +40,8 @@ def collect_validation_reports(reports_dir: Path) -> list[dict]:
     for p in sorted(reports_dir.glob("*.json")):
         if p.name.startswith("migration_impact") or p.name in skip:
             continue
+        if "violated" in p.name:
+            continue
         try:
             data = load_json(p)
             if "results" not in data:
@@ -122,7 +124,9 @@ def schema_evolution_plain(reports_dir: Path) -> list[str]:
         return ["schema_evolution.json could not be read."]
     out = []
     for ch in ev.get("changes") or []:
-        if ch.get("verdict") == "BREAKING":
+        if ch.get("severity") == "CRITICAL":
+            out.append(f"CRITICAL ({ch.get('taxonomy_class', 'narrow_type')}): {ch.get('field')} — {ch.get('message')}")
+        elif ch.get("verdict") == "BREAKING":
             out.append(f"BREAKING: {ch.get('field')} — {ch.get('message')}")
     if not out:
         out.append("No breaking schema deltas in the compared snapshot pair.")

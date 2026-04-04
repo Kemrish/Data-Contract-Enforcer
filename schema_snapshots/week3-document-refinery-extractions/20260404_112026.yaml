@@ -245,11 +245,11 @@ quality:
     - missing_count(fact_page_ref) = 0
     - missing_count(fact_source_excerpt) = 0
 profiling_metadata:
-  generated_at: '2026-04-04T11:25:51.841062+00:00'
+  generated_at: '2026-04-04T11:20:26.005298+00:00'
   rows_profiled: 47
   columns_profiled: 14
   source_jsonl: C:/Users/Administrator/Desktop/Data Contract Enforcer/outputs/week3/extractions.jsonl
-  profiling_engine: pandas+jsonl_flatten+ydata_profiling
+  profiling_engine: pandas+jsonl_flatten
   confidence_0_1_enforced_fields:
   - fact_confidence
   numeric_fields_with_mean_stddev:

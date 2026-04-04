@@ -50,6 +50,51 @@ def _flatten_payload_metadata(base: dict, r: dict) -> None:
             base[f"metadata_{mk}"] = mv
 
 
+def flatten_lineage_snapshot_record(snap: dict) -> list[dict]:
+    """Must match contracts/generator.py — one row per lineage node."""
+    rows: list[dict] = []
+    sid = snap.get("snapshot_id")
+    gc = snap.get("git_commit")
+    cap = snap.get("captured_at")
+    root = snap.get("codebase_root")
+    for n in snap.get("nodes") or []:
+        md = n.get("metadata") or {}
+        if not isinstance(n, dict):
+            continue
+        rows.append(
+            {
+                "snapshot_id": sid,
+                "git_commit": gc,
+                "captured_at": cap,
+                "codebase_root": root,
+                "node_id": n.get("node_id"),
+                "node_type": n.get("type"),
+                "node_label": n.get("label"),
+                "metadata_path": md.get("path"),
+                "metadata_language": md.get("language"),
+                "edge_count_estimate": len(snap.get("edges") or []),
+                "node_count_estimate": len(snap.get("nodes") or []),
+            }
+        )
+    if not rows:
+        rows.append(
+            {
+                "snapshot_id": sid,
+                "git_commit": gc,
+                "captured_at": cap,
+                "codebase_root": root,
+                "node_id": None,
+                "node_type": None,
+                "node_label": None,
+                "metadata_path": None,
+                "metadata_language": None,
+                "edge_count_estimate": len(snap.get("edges") or []),
+                "node_count_estimate": 0,
+            }
+        )
+    return rows
+
+
 def flatten_record(record: dict) -> list[dict]:
     """Must match contracts/generator.py flatten_record logic."""
     base: dict = {}
@@ -80,7 +125,12 @@ def flatten_record(record: dict) -> list[dict]:
     return rows
 
 
-def flatten(records: list[dict]) -> pd.DataFrame:
+def flatten(records: list[dict], contract_id: str = "") -> pd.DataFrame:
+    if contract_id == "week4-brownfield-cartographer-lineage":
+        rows = []
+        for snap in records:
+            rows.extend(flatten_lineage_snapshot_record(snap))
+        return pd.DataFrame(rows) if rows else pd.DataFrame()
     rows = []
     for rec in records:
         rows.extend(flatten_record(rec))
@@ -220,7 +270,7 @@ def main() -> None:
         contract = yaml.safe_load(f)
     contract_id = contract.get("id", "unknown-contract")
     records = load_jsonl(args.data)
-    df = flatten(records)
+    df = flatten(records, contract_id)
 
     schema = contract.get("schema", {})
     results = []
